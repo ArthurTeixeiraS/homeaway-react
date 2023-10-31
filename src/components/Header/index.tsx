@@ -19,9 +19,12 @@ export function Header() {
       <div className="middleOptions">
         <nav>
           <ul>
-            <li>Encontre um Imóvel</li>
-            <li>Guias de Aluguel</li>
-            <li>Favoritos</li>
+            <li>
+              <a href="/findPlaces">Encontrar Imóvel</a>
+            </li>
+            <li>
+              <a href="/rentGuide">Guia para alugueis</a>
+            </li>
           </ul>
         </nav>
       </div>

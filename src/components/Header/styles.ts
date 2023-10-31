@@ -2,9 +2,9 @@ import { styled } from 'styled-components'
 
 export const HeaderContainer = styled.header`
   display: inline-flex;
-  padding: 7px 74px 4px 76px;
+  padding: 7px 0.5px 4px 30px;
   width: 100%;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   gap: 5px;
   background-color: ${(props) => props.theme.gray};
@@ -30,13 +30,43 @@ export const HeaderContainer = styled.header`
     }
   }
   .middleOptions {
-    width: 33.3%;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 0;
+    padding-bottom: 0;
+    max-width: 120rem;
+    margin: 0 auto;
+    padding: 8rem var(--gap);
     nav {
       ul {
         display: flex;
+        list-style: none;
         li {
-          list-style: none;
           padding: 10px;
+          a {
+            text-decoration: none;
+            color: ${(props) => props.theme.black};
+            display: block;
+            padding: 1rem;
+            position: relative;
+
+            &::after {
+              content: '';
+              position: absolute;
+              bottom: 1rem;
+              left: 50%;
+              width: 0%;
+              height: 0.2rem;
+              background: ${(props) => props.theme['blue-primary']};
+              transition: all 300ms ease-in-out;
+              top: 75%;
+            }
+
+            &:hover::after {
+              width: 70%;
+              left: 15%;
+            }
+          }
         }
       }
     }
@@ -46,7 +76,7 @@ export const HeaderContainer = styled.header`
 export const InitialOptions = styled.div`
   display: flex;
   justify-items: flex-end;
-  width: 33.3%;
+  width: 27%;
   height: 59px;
   padding: 6px 6px 7px 5px;
   align-items: center;
