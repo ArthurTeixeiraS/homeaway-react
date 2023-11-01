@@ -1,3 +1,12 @@
+import { MainMenuHeader } from '../../components/Header/HeaderMenu'
+import { MainMenuContainer } from './styles'
+
 export function Home() {
-  return <h1>Hello</h1>
+  return (
+    <>
+      <MainMenuContainer>
+        <MainMenuHeader />
+      </MainMenuContainer>
+    </>
+  )
 }

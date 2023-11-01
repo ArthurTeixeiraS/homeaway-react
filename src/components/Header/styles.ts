@@ -7,10 +7,11 @@ export const HeaderContainer = styled.header`
   justify-content: space-around;
   align-items: center;
   gap: 5px;
-  background-color: ${(props) => props.theme.gray};
+  background-color: transparent;
+  z-index: 10;
 
   .logo {
-    width: 33.3%;
+    width: 31.3%;
   }
 
   .logoName {
@@ -27,6 +28,7 @@ export const HeaderContainer = styled.header`
     a {
       display: flex;
       align-items: center;
+      width: 50%;
     }
   }
   .middleOptions {
@@ -118,4 +120,7 @@ export const BecomeHostButton = styled.button`
     filter: brightness(95%);
     transform: scale(1.03);
   }
+`
+export const MenuSpacing = styled.div`
+  height: 90px;
 `
