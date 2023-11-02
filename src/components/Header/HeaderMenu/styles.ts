@@ -1,82 +1,65 @@
 import { styled } from 'styled-components'
+import backgroundImage from '../../../assets/backgrounds/Bg-image.png'
 
 export const HeaderContainer = styled.header`
-  display: flex;
-  flex-direction: column;
-  padding: 7px 0.5px 4px 30px;
+  min-height: 100vh;
   width: 100%;
-  justify-content: space-between;
-  align-items: center;
-  gap: 5px;
-  background-color: transparent;
-  z-index: 10;
-  height: 100vh;
-  background-image: url(../../../assets/backgrounds/Bg-image.png);
-
-  .nav-menu {
+  background-image: url(${backgroundImage});
+  background-size: cover;
+  background-position: center;
+  .menu-content {
     display: flex;
-    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 7%;
   }
 
   .logo {
-    width: 31.3%;
-  }
-
-  .logoName {
-    text-decoration: none;
-    color: ${(props) => props.theme['blue-primary']};
-  }
-
-  .logoName span {
-    color: ${(props) => props.theme['yellow-secondary']};
-  }
-
-  h1 {
-    font-size: 30px;
+    cursor: pointer;
     a {
       display: flex;
+      justify-content: center;
+      text-decoration: none;
+      color: ${(props) => props.theme['blue-primary']};
+      span {
+        color: ${(props) => props.theme['yellow-secondary']};
+      }
+      h4 {
+        font-size: 3.2rem;
+      }
       align-items: center;
-      width: 50%;
     }
   }
-  .middleOptions {
-    display: flex;
-    justify-content: space-between;
-    padding-top: 0;
-    padding-bottom: 0;
-    max-width: 120rem;
-    margin: 0 auto;
-    padding: 8rem var(--gap);
-    nav {
-      ul {
-        display: flex;
-        list-style: none;
-        li {
-          padding: 10px;
-          a {
-            text-decoration: none;
-            color: ${(props) => props.theme.white};
-            display: block;
-            padding: 1rem;
-            position: relative;
 
-            &::after {
-              content: '';
-              position: absolute;
-              bottom: 1rem;
-              left: 50%;
-              width: 0%;
-              height: 0.2rem;
-              background: ${(props) => props.theme['blue-primary']};
-              transition: all 300ms ease-in-out;
-              top: 75%;
-            }
+  .nav-links {
+    li {
+      display: inline-block;
+      list-style-type: none;
+      margin: 1rem 3rem;
+      a {
+        text-decoration: none;
+        color: ${(props) => props.theme.white};
+        display: block;
+        text-decoration: none;
+        position: relative;
+        margin-top: 0.8rem;
+        font-size: 1.3rem;
+        font-weight: bold;
 
-            &:hover::after {
-              width: 70%;
-              left: 15%;
-            }
-          }
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -0.5rem;
+          left: 50%;
+          width: 0%;
+          height: 0.2rem;
+          background-color: ${(props) => props.theme['blue-primary']};
+          transition: all 300ms ease-in-out;
+        }
+
+        &:hover::after {
+          width: 60%;
+          left: 20%;
         }
       }
     }
@@ -84,6 +67,9 @@ export const HeaderContainer = styled.header`
 `
 
 export const InitialOptions = styled.div`
+  .disabled {
+    display: none;
+  }
   display: flex;
   justify-items: flex-end;
   width: 27%;
@@ -111,6 +97,42 @@ export const InitialOptions = styled.div`
       transform: scale(1.05);
     }
   }
+
+  .dropdown {
+    background-color: ${(props) => props.theme.white};
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    .dropdown-content {
+      padding: 0.5rem;
+      position: absolute;
+      background-color: ${(props) => props.theme.white};
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      border-radius: 1rem;
+      left: 84%;
+      top: 10.9%;
+      li {
+        list-style: none;
+        margin: 1.5rem;
+        a {
+          text-decoration: none;
+          color: ${(props) => props.theme['blue-primary']};
+          display: block;
+          text-decoration: none;
+          position: relative;
+          margin-top: 0.8rem;
+          font-size: 1.3rem;
+          font-weight: bold;
+          &:hover {
+            transform: scale(1.02);
+          }
+        }
+      }
+    }
+  }
 `
 export const BecomeHostButton = styled.button`
   width: 186px;
@@ -123,12 +145,81 @@ export const BecomeHostButton = styled.button`
   background: ${(props) => props.theme['yellow-secondary']};
   border: 0;
   transition: all 0.2s ease-in-out;
+  font-size: 1.5rem;
+  font-weight: bold;
 
   &:hover {
     filter: brightness(95%);
     transform: scale(1.03);
   }
 `
-export const MenuSpacing = styled.div`
-  height: 90px;
+
+export const SearchContainer = styled.div`
+  padding: 15% 25%;
+  .headers {
+    display: flex;
+    justify-content: space-around;
+    .title {
+      h1 {
+        font-size: 4vw;
+        font-weight: bold;
+        color: ${(props) => props.theme['blue-primary']};
+        text-align: center;
+      }
+    }
+    .links {
+      display: flex;
+      justify-content: space-between;
+      left: -2rem;
+      button {
+        margin: 2rem;
+        background-color: transparent;
+        border: 0;
+        padding: 0.5rem;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: ${(props) => props.theme.white};
+        border-bottom: 2px solid ${(props) => props.theme['yellow-secondary']};
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+          color: ${(props) => props.theme['yellow-secondary']};
+          border-bottom: 2px solid ${(props) => props.theme['yellow-secondary']};
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+  .search-box {
+    background-color: ${(props) => props.theme.white};
+    width: 100%;
+    margin: 1%.5 auto;
+    padding: 0.6rem 1rem 0.6rem 3rem;
+    border-radius: 5rem;
+    font-size: 1.5rem;
+    form {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+
+      input {
+        display: block;
+        border: 0;
+        outline: none;
+        background-color: transparent;
+      }
+
+      button {
+        background-color: ${(props) => props.theme['yellow-secondary']};
+        width: 5.5rem;
+        height: 5.5rem;
+        border-radius: 50%;
+        border: 0;
+        outline: none;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+      }
+    }
+  }
 `
