@@ -4,6 +4,15 @@ import logoHomeAway from '../../assets/logoHomeAway.png'
 import hamburguerMenu from '../../assets/gg_menu.svg'
 import userCircle from '../../assets/bx_bxs-user-circle.svg'
 
+function abreFechaDropdown() {
+  const drop = document.querySelector('.dropdown')
+  if (drop?.classList.contains('disabled')) {
+    drop.classList.remove('disabled')
+  } else {
+    drop?.classList.add('disabled')
+  }
+}
+
 export function Header() {
   return (
     <>
@@ -35,9 +44,19 @@ export function Header() {
 
         <InitialOptions>
           <BecomeHostButton>Torne-se Parceiro</BecomeHostButton>
-          <div className="initialCard">
+          <div className="initialCard" onClick={abreFechaDropdown}>
             <img src={hamburguerMenu} alt="" />
             <img src={userCircle} width="40px" alt="" />
+          </div>
+          <div className="dropdown disabled">
+            <ul className="dropdown-content">
+              <li>
+                <a href="/login">Entrar</a>
+              </li>
+              <li>
+                <a href="/singup">Cadastrar-se</a>
+              </li>
+            </ul>
           </div>
         </InitialOptions>
       </HeaderContainer>

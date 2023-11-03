@@ -24,7 +24,7 @@ export const HeaderContainer = styled.header`
   }
 
   h1 {
-    font-size: 30px;
+    font-size: 3.2rem;
     a {
       display: flex;
       align-items: center;
@@ -32,43 +32,34 @@ export const HeaderContainer = styled.header`
     }
   }
   .middleOptions {
-    display: flex;
-    justify-content: space-between;
-    padding-top: 0;
-    padding-bottom: 0;
-    max-width: 120rem;
-    margin: 0 auto;
-    padding: 8rem var(--gap);
-    nav {
-      ul {
-        display: flex;
-        list-style: none;
-        li {
-          padding: 10px;
-          a {
-            text-decoration: none;
-            color: ${(props) => props.theme.black};
-            display: block;
-            padding: 1rem;
-            position: relative;
+    li {
+      display: inline-block;
+      list-style-type: none;
+      margin: 1rem 3rem;
+      a {
+        text-decoration: none;
+        color: ${(props) => props.theme.black};
+        display: block;
+        text-decoration: none;
+        position: relative;
+        margin-top: 0.8rem;
+        font-size: 1.3rem;
+        font-weight: bold;
 
-            &::after {
-              content: '';
-              position: absolute;
-              bottom: 1rem;
-              left: 50%;
-              width: 0%;
-              height: 0.2rem;
-              background: ${(props) => props.theme['blue-primary']};
-              transition: all 300ms ease-in-out;
-              top: 75%;
-            }
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -0.5rem;
+          left: 50%;
+          width: 0%;
+          height: 0.2rem;
+          background-color: ${(props) => props.theme['blue-primary']};
+          transition: all 300ms ease-in-out;
+        }
 
-            &:hover::after {
-              width: 70%;
-              left: 15%;
-            }
-          }
+        &:hover::after {
+          width: 80%;
+          left: 10%;
         }
       }
     }
@@ -76,6 +67,9 @@ export const HeaderContainer = styled.header`
 `
 
 export const InitialOptions = styled.div`
+  .disabled {
+    display: none;
+  }
   display: flex;
   justify-items: flex-end;
   width: 27%;
@@ -103,6 +97,41 @@ export const InitialOptions = styled.div`
       transform: scale(1.05);
     }
   }
+  .dropdown {
+    background-color: ${(props) => props.theme.white};
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    .dropdown-content {
+      padding: 0.5rem;
+      position: absolute;
+      background-color: ${(props) => props.theme.white};
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      border-radius: 1rem;
+      left: 84%;
+      top: 10.9%;
+      li {
+        list-style: none;
+        margin: 1.5rem;
+        a {
+          text-decoration: none;
+          color: ${(props) => props.theme['blue-primary']};
+          display: block;
+          text-decoration: none;
+          position: relative;
+          margin-top: 0.8rem;
+          font-size: 1.3rem;
+          font-weight: bold;
+          &:hover {
+            transform: scale(1.02);
+          }
+        }
+      }
+    }
+  }
 `
 export const BecomeHostButton = styled.button`
   width: 186px;
@@ -115,6 +144,8 @@ export const BecomeHostButton = styled.button`
   background: ${(props) => props.theme['yellow-secondary']};
   border: 0;
   transition: all 0.2s ease-in-out;
+  font-size: 1.5rem;
+  font-weight: bold;
 
   &:hover {
     filter: brightness(95%);
