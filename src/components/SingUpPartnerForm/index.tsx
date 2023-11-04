@@ -1,28 +1,29 @@
 import { BackGroundImage, SingupContainer } from './styles'
 
-export function SingUpForm() {
+export function SingUpFormPartner() {
+  function handleSubmit(): void {
+    const form = document.querySelector('.form') as HTMLFormElement
+    form.addEventListener('submit', () => {})
+  }
   return (
     <BackGroundImage>
       <SingupContainer>
         <div className="titleContainer">
           <h2>
-            Começe a <span className="containerSpan">Alugar!</span>
+            Começe a <span className="containerSpan">Hospedar!</span>
           </h2>
           <p>Mas antes, faça sua própria autenticação</p>
         </div>
         <div className="loginInput">
           <div className="form-title-container">
             <h6 className="form-title">
-              Cadastro como{' '}
-              <span id="span-change" className="blue">
-                Cliente
-              </span>
+              Cadastro como <span id="span-change">Parceiro</span>
             </h6>
             <a href="/userLogin/">
               <span className="login">Já possuo uma conta</span>
             </a>
           </div>
-          <form action="" className="form">
+          <form action="" className="form" onSubmit={handleSubmit}>
             <select name="ddd" id="ddd">
               <option value="68">AC (68)</option>
               <option value="82">AL (82)</option>
@@ -87,7 +88,7 @@ export function SingUpForm() {
                 Continuar
               </button>
               <button type="button" className="switchButton">
-                <a href="/singupPartner">Quero hospedar</a>
+                <a href="/singup">Quero alugar</a>
               </button>
             </div>
           </form>

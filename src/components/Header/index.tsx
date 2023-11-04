@@ -43,7 +43,9 @@ export function Header() {
         </div>
 
         <InitialOptions>
-          <BecomeHostButton>Torne-se Parceiro</BecomeHostButton>
+          <BecomeHostButton>
+            <a href="/singupPartner">Torne-se Parceiro</a>
+          </BecomeHostButton>
           <div className="initialCard" onClick={abreFechaDropdown}>
             <img src={hamburguerMenu} alt="" />
             <img src={userCircle} width="40px" alt="" />

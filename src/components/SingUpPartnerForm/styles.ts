@@ -7,7 +7,7 @@ export const SingupContainer = styled.div`
   height: 70%;
   z-index: 5;
   border-radius: 2.8rem;
-  border: 2px solid ${(props) => props.theme['blue-primary']};
+  border: 2px solid ${(props) => props.theme['yellow-secondary']};
   padding: 3rem;
   .titleContainer {
     display: flex;
@@ -19,7 +19,7 @@ export const SingupContainer = styled.div`
     h2 {
       font-size: 2.5rem;
       span {
-        color: ${(props) => props.theme['blue-primary']};
+        color: ${(props) => props.theme['yellow-secondary']};
       }
     }
     p {
@@ -54,7 +54,6 @@ export const SingupContainer = styled.div`
         padding: 1rem;
         font-size: 1.5rem;
         font-weight: bold;
-        color: ${(props) => props.theme.gray};
       }
       .caption {
         margin-left: 1rem;
@@ -72,7 +71,7 @@ export const SingupContainer = styled.div`
           height: 4.5rem;
           border-radius: 2rem;
           border: 0;
-          background: ${(props) => props.theme['blue-primary']};
+          background: ${(props) => props.theme['yellow-secondary']};
           color: white;
           font-size: 1.3rem;
         }
@@ -82,7 +81,7 @@ export const SingupContainer = styled.div`
           height: 4.5rem;
           border-radius: 2rem;
           border: 0;
-          background: ${(props) => props.theme['yellow-secondary']};
+          background: ${(props) => props.theme['blue-primary']};
           color: white;
           font-size: 1.3rem;
           a {
@@ -113,7 +112,7 @@ export const SingupContainer = styled.div`
     .form-title {
       font-size: 2rem;
       span {
-        color: ${(props) => props.theme['blue-primary']};
+        color: ${(props) => props.theme['yellow-secondary']};
       }
     }
     a {

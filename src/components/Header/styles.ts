@@ -9,6 +9,7 @@ export const HeaderContainer = styled.header`
   gap: 5px;
   background-color: transparent;
   z-index: 10;
+  border-bottom: 1px solid ${(props) => props.theme['container-colors']};
 
   .logo {
     width: 31.3%;
@@ -146,6 +147,10 @@ export const BecomeHostButton = styled.button`
   transition: all 0.2s ease-in-out;
   font-size: 1.5rem;
   font-weight: bold;
+  a {
+    text-decoration: none;
+    color: ${(props) => props.theme.white};
+  }
 
   &:hover {
     filter: brightness(95%);

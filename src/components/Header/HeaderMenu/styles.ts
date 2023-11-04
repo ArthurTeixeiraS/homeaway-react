@@ -147,6 +147,10 @@ export const BecomeHostButton = styled.button`
   transition: all 0.2s ease-in-out;
   font-size: 1.5rem;
   font-weight: bold;
+  a {
+    text-decoration: none;
+    color: ${(props) => props.theme.white};
+  }
 
   &:hover {
     filter: brightness(95%);
