@@ -55,7 +55,7 @@ export const SingupContainer = styled.div`
         font-size: 1.5rem;
         font-weight: bold;
       }
-      @media screen and (max-width: 1360px) {
+      @media screen and (max-width: 1366px) {
         input[type='text'] {
           width: 75.8%;
         }
