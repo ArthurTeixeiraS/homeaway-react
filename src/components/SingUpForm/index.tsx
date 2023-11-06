@@ -8,8 +8,11 @@ export function SingUpForm() {
     ddd: '68',
     phone: '',
     password: '',
+    repeatPassword: '',
     role: 'TENANT',
   })
+  const [passwordError, setPasswordError] = useState('')
+
   const handleInputChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
@@ -18,9 +21,16 @@ export function SingUpForm() {
       ...formData,
       [name]: value,
     })
+    if (name === 'password' || name === 'repeatPassword') {
+      setPasswordError('')
+    }
   }
   const getFormData = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+    if (formData.password !== formData.repeatPassword) {
+      setPasswordError('As senhas não coincidem.')
+      return
+    }
     const url = userRegisterUrl
 
     axios
@@ -114,6 +124,18 @@ export function SingUpForm() {
                 Insira pelo menos 8 caracteres, recomendamos uso de letras,
                 números, letras maiúsculas e símbolos
               </p>
+            </div>
+            <input
+              type="password"
+              name="repeatPassword" // Campo de repetir senha
+              className="password"
+              placeholder="Repita sua senha"
+              required
+              onChange={handleInputChange}
+              minLength={8}
+            />
+            <div className="caption error">
+              <p>{passwordError}</p>
             </div>
             <div className="buttons">
               <button type="submit" className="continue">

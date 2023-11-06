@@ -4,7 +4,7 @@ import banner from '../../assets/backgrounds/banner-blur.png'
 export const SingupContainer = styled.div`
   background-color: ${(props) => props.theme.white};
   width: 40%;
-  height: 70%;
+  height: 82%;
   z-index: 5;
   border-radius: 2.8rem;
   border: 2px solid ${(props) => props.theme['blue-primary']};
@@ -54,12 +54,15 @@ export const SingupContainer = styled.div`
         padding: 1rem;
         font-size: 1.5rem;
         font-weight: bold;
-        color: ${(props) => props.theme.gray};
       }
       .caption {
         margin-left: 1rem;
         display: block;
         margin-top: 0.5rem;
+      }
+      .error {
+        color: red;
+        font-size: 1.3rem;
       }
       .buttons {
         padding: 2rem 0 5rem 0;

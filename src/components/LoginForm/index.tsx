@@ -1,3 +1,8 @@
+import { LoginContainer } from './styles'
 export function LoginForm() {
-  return <h1>Hi</h1>
+  return (
+    <LoginContainer>
+      <h1>Olá</h1>
+    </LoginContainer>
+  )
 }
