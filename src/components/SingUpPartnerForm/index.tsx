@@ -1,9 +1,36 @@
 import { BackGroundImage, SingupContainer } from './styles'
+import React, { useState } from 'react'
+import axios from 'axios'
+const userRegisterUrl: string = 'http://localhost:8080/register'
 
 export function SingUpFormPartner() {
-  function handleSubmit(): void {
-    const form = document.querySelector('.form') as HTMLFormElement
-    form.addEventListener('submit', () => {})
+  const [formData, setFormData] = useState({
+    ddd: '68',
+    phone: '',
+    password: '',
+    role: 'HOST',
+  })
+  const handleInputChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+  ) => {
+    const { name, value } = event.target
+    setFormData({
+      ...formData,
+      [name]: value,
+    })
+  }
+  const getFormData = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    const url = userRegisterUrl
+
+    axios
+      .post(url, formData)
+      .then((response) => {
+        console.log('Resposta da requisição POST:', response.data)
+      })
+      .catch((error) => {
+        console.error('Erro ao enviar a requisição POST:', error)
+      })
   }
   return (
     <BackGroundImage>
@@ -23,8 +50,8 @@ export function SingUpFormPartner() {
               <span className="login">Já possuo uma conta</span>
             </a>
           </div>
-          <form action="" className="form" onSubmit={handleSubmit}>
-            <select name="ddd" id="ddd">
+          <form action="" className="form" onSubmit={(e) => getFormData(e)}>
+            <select name="ddd" id="ddd" onChange={handleInputChange}>
               <option value="68">AC (68)</option>
               <option value="82">AL (82)</option>
               <option value="96">AP (96)</option>
@@ -61,6 +88,7 @@ export function SingUpFormPartner() {
               pattern="[0-9]{5}-[0-9]{4}"
               required
               placeholder="00000-0000"
+              onChange={handleInputChange}
             />
             <div className="caption">
               <p>
@@ -75,6 +103,7 @@ export function SingUpFormPartner() {
               className="password"
               placeholder="Insira sua senha"
               required
+              onChange={handleInputChange}
               minLength={8}
             />
             <div className="caption">
