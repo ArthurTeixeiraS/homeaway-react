@@ -100,7 +100,7 @@ export function SingUpForm() {
               autoComplete="tel"
               pattern="[0-9]{5}-[0-9]{4}"
               required
-              placeholder="00000-0000"
+              placeholder="Telefone (0000000-0000)"
               onChange={handleInputChange}
             />
             <div className="caption">

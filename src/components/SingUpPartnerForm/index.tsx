@@ -97,7 +97,7 @@ export function SingUpFormPartner() {
               autoComplete="tel"
               pattern="[0-9]{5}-[0-9]{4}"
               required
-              placeholder="00000-0000"
+              placeholder="Telefone (0000000-0000)"
               onChange={handleInputChange}
             />
             <div className="caption">
@@ -124,7 +124,7 @@ export function SingUpFormPartner() {
             </div>
             <input
               type="password"
-              name="repeatPassword" // Campo de repetir senha
+              name="repeatPassword"
               className="password"
               placeholder="Repita sua senha"
               required

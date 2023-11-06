@@ -169,6 +169,10 @@ export const SearchContainer = styled.div`
         font-weight: bold;
         color: ${(props) => props.theme['blue-primary']};
         text-align: center;
+        a {
+          text-decoration: none;
+          color: ${(props) => props.theme['blue-primary']};
+        }
       }
     }
     .links {

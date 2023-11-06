@@ -74,7 +74,9 @@ export function MainMenuHeader() {
         <SearchContainer>
           <div className="headers">
             <div className="title">
-              <h1>Buscar</h1>
+              <h1>
+                <a href="/roomRegister">Buscar</a>
+              </h1>
             </div>
             <div className="links">
               <button>Quartos</button>

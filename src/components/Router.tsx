@@ -3,7 +3,8 @@ import { Home } from '../pages/Home'
 import { DefaultLayout } from '../layouts/DefaultLayout'
 import { Register } from '../pages/Register'
 import { RegisterPartner } from '../pages/RegisterPartner'
-import { LoginForm } from './LoginForm'
+import { Login } from '../pages/Login'
+import { Error } from '../pages/Errors'
 
 export function Router() {
   return (
@@ -11,9 +12,10 @@ export function Router() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/" element={<DefaultLayout />}>
+          <Route path="*" element={<Error />} />
           <Route path="/singup" element={<Register />} />
           <Route path="/singupPartner" element={<RegisterPartner />} />
-          <Route path="/login" element={<LoginForm />} />
+          <Route path="/login" element={<Login />} />
         </Route>
       </Routes>
     </>

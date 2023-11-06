@@ -1,5 +1,4 @@
-import rightArrow from '../../assets/right-arrow.png'
-import { FooterContainer, NewsLatter } from './styles'
+import { FooterContainer } from './styles'
 import playStoreIcon from '../../assets/ion_logo-google-playstore.png'
 import appleStoreIcon from '../../assets/AppleStoreLogo.png'
 import fbIcon from '../../assets/fb icon.png'
@@ -10,20 +9,6 @@ import linkedinIcon from '../../assets/linkedin icoon.png'
 export function Footer() {
   return (
     <>
-      <NewsLatter>
-        <div className="newslatterlabel">
-          <h4>Novidades</h4>
-          <p>Fique por dentro!</p>
-        </div>
-        <div className="emailSend">
-          <form action="">
-            <input type="email" placeholder="Digite seu e-mail" required />
-            <button type="submit">
-              <img src={rightArrow} alt="" />
-            </button>
-          </form>
-        </div>
-      </NewsLatter>
       <FooterContainer>
         <div className="infoContainer">
           <h4>
