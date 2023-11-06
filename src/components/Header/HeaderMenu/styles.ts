@@ -112,8 +112,8 @@ export const InitialOptions = styled.div`
       box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
       z-index: 1;
       border-radius: 1rem;
-      left: 84%;
-      top: 10.9%;
+      left: 80%;
+      top: 8.5rem;
       li {
         list-style: none;
         margin: 1.5rem;

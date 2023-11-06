@@ -3,10 +3,8 @@ import { LoginForm } from '../../components/LoginForm'
 
 export function Register() {
   return (
-    <>
-      <Container>
-        <LoginForm />
-      </Container>
-    </>
+    <Container>
+      <LoginForm />
+    </Container>
   )
 }

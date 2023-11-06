@@ -106,14 +106,14 @@ export const InitialOptions = styled.div`
 
     .dropdown-content {
       padding: 0.5rem;
-      position: absolute;
+      position: fixed;
       background-color: ${(props) => props.theme.white};
       min-width: 160px;
       box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-      z-index: 1;
+      z-index: 2;
       border-radius: 1rem;
-      left: 84%;
-      top: 10.9%;
+      left: 82%;
+      top: 8.5rem;
       li {
         list-style: none;
         margin: 1.5rem;

@@ -46,7 +46,7 @@ export const SingupContainer = styled.div`
         font-weight: bold;
       }
       input[type='text'] {
-        width: 35.5rem;
+        width: 83.5%;
         outline: none;
         height: 5rem;
         border-radius: 0 2rem 2rem 0;
@@ -54,6 +54,11 @@ export const SingupContainer = styled.div`
         padding: 1rem;
         font-size: 1.5rem;
         font-weight: bold;
+      }
+      @media screen and (max-width: 1360px) {
+        input[type='text'] {
+          width: 75.8%;
+        }
       }
       .caption {
         margin-left: 1rem;
