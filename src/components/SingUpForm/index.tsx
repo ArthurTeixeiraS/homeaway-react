@@ -59,7 +59,7 @@ export function SingUpForm() {
                 Cliente
               </span>
             </h6>
-            <a href="/userLogin/">
+            <a href="/login/">
               <span className="login">Já possuo uma conta</span>
             </a>
           </div>

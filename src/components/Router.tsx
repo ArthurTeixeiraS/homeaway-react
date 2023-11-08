@@ -5,6 +5,7 @@ import { Register } from '../pages/Register'
 import { RegisterPartner } from '../pages/RegisterPartner'
 import { Login } from '../pages/Login'
 import { Error } from '../pages/Errors'
+import { FindPlaces } from './FindPlaces'
 
 export function Router() {
   return (
@@ -16,6 +17,7 @@ export function Router() {
           <Route path="/singup" element={<Register />} />
           <Route path="/singupPartner" element={<RegisterPartner />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/findPlaces" element={<FindPlaces />} />
         </Route>
       </Routes>
     </>

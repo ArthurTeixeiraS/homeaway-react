@@ -56,7 +56,7 @@ export function SingUpFormPartner() {
             <h6 className="form-title">
               Cadastro como <span id="span-change">Parceiro</span>
             </h6>
-            <a href="/userLogin/">
+            <a href="/login/">
               <span className="login">Já possuo uma conta</span>
             </a>
           </div>

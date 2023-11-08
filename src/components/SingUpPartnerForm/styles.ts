@@ -4,11 +4,12 @@ import banner from '../../assets/backgrounds/banner-blur.png'
 export const SingupContainer = styled.div`
   background-color: ${(props) => props.theme.white};
   width: 40%;
-  height: 82%;
+  height: 70%;
   z-index: 5;
   border-radius: 2.8rem;
   border: 2px solid ${(props) => props.theme['yellow-secondary']};
   padding: 3rem;
+  margin-top: 7rem;
   .titleContainer {
     display: flex;
     flex-direction: column;
@@ -139,5 +140,4 @@ export const BackGroundImage = styled.div`
   background-size: cover;
   display: flex;
   justify-content: center;
-  align-items: center;
 `

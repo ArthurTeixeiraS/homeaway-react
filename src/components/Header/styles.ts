@@ -2,7 +2,7 @@ import { styled } from 'styled-components'
 
 export const HeaderContainer = styled.header`
   display: inline-flex;
-  padding: 7px 0.5px 4px 30px;
+  padding: 0.7rem 0 0.4rem 3rem;
   width: 100%;
   justify-content: space-around;
   align-items: center;

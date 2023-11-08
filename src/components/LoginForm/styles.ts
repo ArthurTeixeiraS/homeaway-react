@@ -4,11 +4,11 @@ import banner from '../../assets/backgrounds/banner-blur.png'
 export const LoginContainer = styled.div`
   background-color: ${(props) => props.theme.white};
   width: 40%;
-  height: 70%;
+  height: 63%;
   z-index: 5;
   border-radius: 2.8rem;
   padding: 3rem;
-  margin: 0 auto !important;
+  margin-top: 7rem;
   display: block;
   justify-content: center;
   align-items: center;
@@ -90,5 +90,4 @@ export const BackGroundImage = styled.div`
   background-size: cover;
   display: flex;
   justify-content: center;
-  align-items: center;
 `
