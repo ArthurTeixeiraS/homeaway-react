@@ -12,6 +12,9 @@ export const LoginContainer = styled.div`
   display: block;
   justify-content: center;
   align-items: center;
+  @media screen and (min-width: 1365px) {
+    height: 66%;
+  }
   .titleContainer {
     display: flex;
     flex-direction: column;

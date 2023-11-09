@@ -10,6 +10,9 @@ export const SingupContainer = styled.div`
   border: 2px solid ${(props) => props.theme['yellow-secondary']};
   padding: 3rem;
   margin-top: 7rem;
+  @media screen and (min-width: 1365px) {
+    height: 75%;
+  }
   .titleContainer {
     display: flex;
     flex-direction: column;

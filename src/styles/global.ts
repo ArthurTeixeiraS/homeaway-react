@@ -11,7 +11,7 @@ export const GlobalStyle = createGlobalStyle`
     scroll-behavior: smooth;
 }
     body {
-        background: ${(props) => props.theme['']}
+        background: ${(props) => props.theme.white}
     }
     body, input, textarea, button{
         font-family: 'Montserrat', sans-serif;
