@@ -163,7 +163,7 @@ export function MainMenuHeader() {
 
             <InitialOptions>
               <BecomeHostButton>
-                <a href="/addRoom">Adicione imóveis</a>
+                <a href="/addHotel">Adicione imóveis</a>
               </BecomeHostButton>
               <div className="initialCard" onClick={abreFechaDropdown}>
                 <img src={hamburguerMenu} alt="" />

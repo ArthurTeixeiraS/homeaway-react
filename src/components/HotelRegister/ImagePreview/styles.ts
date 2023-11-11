@@ -6,15 +6,19 @@ export const Container = styled.div`
   justify-content: center;
   flex-direction: column;
   padding: 2.5rem;
-  input {
+  input[type='file'] {
     display: none;
   }
   .labelImage {
     background: ${(props) => props.theme['yellow-secondary']};
     color: ${(props) => props.theme.white};
     border-radius: 1rem;
+    transition: all 0.3s ease-in-out;
     p {
       padding: 0.6rem;
+    }
+    &:hover {
+      transform: scale(1.1);
     }
   }
   div {

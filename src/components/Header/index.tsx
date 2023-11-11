@@ -98,7 +98,7 @@ export function Header() {
 
           <InitialOptions>
             <BecomeHostButton>
-              <a href="/addRoom">Adicione Imóveis</a>
+              <a href="/addHotel">Adicione Imóveis</a>
             </BecomeHostButton>
             <div className="initialCard" onClick={abreFechaDropdown}>
               <img src={hamburguerMenu} alt="" />
