@@ -39,14 +39,14 @@ export const LoginContainer = styled.div`
       display: block;
       align-items: start;
       justify-content: center;
+      padding: 1rem 0;
 
       label {
         font-size: 1.8rem;
         font-weight: bold;
-        padding: 1.5rem 0;
       }
 
-      input[type='text'],
+      input[type='email'],
       input[type='password'] {
         width: 100%;
         outline: none;
@@ -56,7 +56,7 @@ export const LoginContainer = styled.div`
         padding: 1rem;
         font-size: 1.5rem;
         font-weight: bold;
-        margin-top: 1rem;
+        margin-top: 0.5rem;
       }
       p {
         margin: 1rem;

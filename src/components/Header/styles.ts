@@ -1,10 +1,10 @@
 import { styled } from 'styled-components'
 
 export const HeaderContainer = styled.header`
-  display: inline-flex;
+  display: flex;
   padding: 0.7rem 0 0.4rem 3rem;
   width: 100%;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   gap: 5px;
   background-color: transparent;

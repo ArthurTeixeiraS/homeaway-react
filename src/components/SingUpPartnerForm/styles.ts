@@ -49,20 +49,15 @@ export const SingupContainer = styled.div`
         font-size: 1.5rem;
         font-weight: bold;
       }
-      input[type='text'] {
-        width: 83.5%;
+      input[type='email'] {
+        width: 100%;
         outline: none;
         height: 5rem;
-        border-radius: 0 2rem 2rem 0;
+        border-radius: 2rem;
         border: 1px solid #c2c6cc;
         padding: 1rem;
         font-size: 1.5rem;
         font-weight: bold;
-      }
-      @media screen and (max-width: 1390px) {
-        input[type='text'] {
-          width: 75.6%;
-        }
       }
       .caption {
         margin-left: 1rem;

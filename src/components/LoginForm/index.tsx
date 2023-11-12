@@ -5,7 +5,7 @@ const userRegisterUrl: string = 'http://localhost:8080/login'
 
 export function LoginForm() {
   const [formData, setFormData] = useState({
-    phone: '',
+    email: '',
     password: '',
   })
   const handleInputChange = (
@@ -20,6 +20,7 @@ export function LoginForm() {
   const getFormData = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const url = userRegisterUrl
+    console.log(formData)
 
     axios
       .post(url, formData)
@@ -39,22 +40,19 @@ export function LoginForm() {
         </div>
         <div className="loginInput">
           <form action="" className="form" onSubmit={(e) => getFormData(e)}>
-            <label htmlFor="phone">Digite o numero de Telefone</label>
+            <label htmlFor="email">Digite seu email</label>
             <input
-              type="text"
-              name="phone"
-              id="phone"
-              autoComplete="tel"
-              pattern="[0-9]{7}-[0-9]{4}"
+              type="email"
+              name="email"
+              id="email"
               required
-              placeholder="Telefone (0000000-0000)"
+              placeholder="exemplo@email.com"
               onChange={handleInputChange}
             />
-            <p>
-              Certifique-se que o telefone é o correto e que está no formato
-              00000000-0000
-            </p>
-            <label htmlFor="phone">Digite a sua senha:</label>
+            <p></p>
+            <label htmlFor="password" className="labelPassword">
+              Digite a sua senha:
+            </label>
             <input
               type="password"
               name="password"

@@ -1,5 +1,6 @@
 import { useState, ChangeEvent, FormEvent } from 'react'
 import { Container } from './styles'
+import axios from 'axios'
 
 const API_URL = 'https://localhost:8080'
 
@@ -72,12 +73,12 @@ export function HotelForm() {
 
     try {
       console.log('Dados enviados:', formData)
-      const response = await fetch(API_URL, {
+      const response = await axios.post(API_URL, {
         method: 'POST',
         body: formDataToSend,
       })
 
-      if (response.ok) {
+      if (response.status === 200) {
         console.log('Registro enviado com sucesso!')
       } else {
         console.error('Erro ao enviar o registro. Tente novamente.')

@@ -162,7 +162,7 @@ export const SearchContainer = styled.div`
   padding: 15% 25%;
   .headers {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     .title {
       h1 {
         font-size: 4vw;
@@ -172,28 +172,6 @@ export const SearchContainer = styled.div`
         a {
           text-decoration: none;
           color: ${(props) => props.theme['blue-primary']};
-        }
-      }
-    }
-    .links {
-      display: flex;
-      justify-content: space-between;
-      left: -2rem;
-      button {
-        margin: 2rem;
-        background-color: transparent;
-        border: 0;
-        padding: 0.5rem;
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: ${(props) => props.theme.white};
-        border-bottom: 2px solid ${(props) => props.theme['yellow-secondary']};
-        transition: all 0.2s ease-in-out;
-
-        &:hover {
-          color: ${(props) => props.theme['yellow-secondary']};
-          border-bottom: 2px solid ${(props) => props.theme['yellow-secondary']};
-          transform: scale(1.05);
         }
       }
     }
