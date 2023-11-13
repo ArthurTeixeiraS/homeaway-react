@@ -1,13 +1,34 @@
-import { LoginContainer, BackGroundImage } from './styles'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import axios from 'axios'
-const userRegisterUrl: string = 'http://localhost:8080/login'
+import { BackGroundImage, LoginContainer } from './styles'
+
+const userLoginURL: string = 'http://localhost:8080/login'
 
 export function LoginForm() {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   })
+
+  const loginUser = async (e: React.FormEvent) => {
+    e.preventDefault()
+
+    try {
+      const response = await axios.post(userLoginURL, {
+        email: formData.email,
+        password: formData.password,
+      })
+
+      const { token } = response.data
+
+      localStorage.setItem('token', token)
+      if (response.data.role === 'host') window.location.href = '/addHotel'
+      if (response.data.role === 'tenant') window.location.href = '/'
+    } catch (error) {
+      console.error('Erro no login:', error)
+    }
+  }
+
   const handleInputChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
@@ -17,20 +38,6 @@ export function LoginForm() {
       [name]: value,
     })
   }
-  const getFormData = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    const url = userRegisterUrl
-    console.log(formData)
-
-    axios
-      .post(url, formData)
-      .then((response) => {
-        console.log('Resposta da requisição POST:', response.data)
-      })
-      .catch((error) => {
-        console.error('Erro ao enviar a requisição POST:', error)
-      })
-  }
   return (
     <BackGroundImage>
       <LoginContainer>
@@ -39,7 +46,7 @@ export function LoginForm() {
           <p>É bom ter você aqui novamente!</p>
         </div>
         <div className="loginInput">
-          <form action="" className="form" onSubmit={(e) => getFormData(e)}>
+          <form action="" className="form" onSubmit={loginUser}>
             <label htmlFor="email">Digite seu email</label>
             <input
               type="email"

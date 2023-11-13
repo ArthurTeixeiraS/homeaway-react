@@ -6,6 +6,7 @@ import { RegisterPartner } from '../pages/RegisterPartner'
 import { Login } from '../pages/Login'
 import { Error } from '../pages/Errors'
 import { HotelRegister } from '../pages/HotelRegistration'
+import { MyHotelsPage } from '../pages/MyHotels'
 
 export function Router() {
   return (
@@ -18,6 +19,7 @@ export function Router() {
           <Route path="/singupPartner" element={<RegisterPartner />} />
           <Route path="/login" element={<Login />} />
           <Route path="/addHotel" element={<HotelRegister />} />
+          <Route path="/myHotels" element={<MyHotelsPage />} />
         </Route>
       </Routes>
     </>

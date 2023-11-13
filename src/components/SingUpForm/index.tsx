@@ -65,6 +65,17 @@ export function SingUpForm() {
           </div>
           <form action="" className="form" onSubmit={(e) => getFormData(e)}>
             <input
+              type="text"
+              name="name"
+              id="name"
+              required
+              placeholder="Seu Nome"
+              onChange={handleInputChange}
+            />
+            <div className="caption">
+              <p>Insira apenas o seu primeiro nome, é o que precisamos!</p>
+            </div>
+            <input
               type="email"
               name="email"
               id="email"

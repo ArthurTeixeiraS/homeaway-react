@@ -4,12 +4,12 @@ import banner from '../../assets/backgrounds/banner-blur.png'
 export const SingupContainer = styled.div`
   background-color: ${(props) => props.theme.white};
   width: 40%;
-  height: 70%;
+  height: 80%;
   z-index: 5;
   border-radius: 2.8rem;
   border: 2px solid ${(props) => props.theme['blue-primary']};
   padding: 3rem;
-  margin-top: 7rem;
+  margin-top: 3.5rem;
   @media screen and (min-width: 1365px) {
     height: 75%;
   }
@@ -50,9 +50,8 @@ export const SingupContainer = styled.div`
         font-weight: bold;
       }
       .caption {
-        margin-left: 1rem;
         display: block;
-        margin-top: 0.5rem;
+        margin: 0.5rem 0 1rem 0.5rem;
       }
       .error {
         color: red;
@@ -90,7 +89,8 @@ export const SingupContainer = styled.div`
       }
     }
   }
-  input[type='password'] {
+  input[type='password'],
+  input[type='text'] {
     width: 100%;
     outline: none;
     height: 5rem;
@@ -99,7 +99,6 @@ export const SingupContainer = styled.div`
     padding: 1rem;
     font-size: 1.5rem;
     font-weight: bold;
-    margin-top: 1rem;
   }
   .form-title-container {
     display: flex;

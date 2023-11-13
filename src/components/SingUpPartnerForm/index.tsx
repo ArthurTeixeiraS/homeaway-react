@@ -1,10 +1,11 @@
 import { BackGroundImage, SingupContainer } from './styles'
 import React, { useState } from 'react'
 import axios from 'axios'
-const userRegisterUrl: string = 'http://localhost:8080/register'
+const userRegisterUrl = 'http://localhost:8080/api/register'
 
 export function SingUpFormPartner() {
   const [formData, setFormData] = useState({
+    name: '',
     email: '',
     password: '',
     repeatPassword: '',
@@ -32,9 +33,15 @@ export function SingUpFormPartner() {
     }
     const url = userRegisterUrl
     console.log(formData)
-
     axios
-      .post(url, formData)
+      .post(url, {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
+        },
+        withCredentials: true,
+        body: JSON.stringify(formData),
+      })
       .then((response) => {
         console.log('Resposta da requisição POST:', response.data)
       })
@@ -61,6 +68,17 @@ export function SingUpFormPartner() {
             </a>
           </div>
           <form action="" className="form" onSubmit={(e) => getFormData(e)}>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              required
+              placeholder="Seu Nome"
+              onChange={handleInputChange}
+            />
+            <div className="caption">
+              <p>Insira apenas o seu primeiro nome, é o que precisamos!</p>
+            </div>
             <input
               type="email"
               name="email"
