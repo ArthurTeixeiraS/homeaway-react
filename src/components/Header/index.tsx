@@ -3,8 +3,7 @@ import { BecomeHostButton, HeaderContainer, InitialOptions } from './styles'
 import logoHomeAway from '../../assets/logoHomeAway.png'
 import hamburguerMenu from '../../assets/gg_menu.svg'
 import userCircle from '../../assets/bx_bxs-user-circle.svg'
-
-const isLogged: boolean = true
+import { isLogged, isHost } from '../../App'
 
 function abreFechaDropdown() {
   const drop = document.querySelector('.dropdown')
@@ -15,7 +14,6 @@ function abreFechaDropdown() {
   }
 }
 export function Header() {
-  const isHost: boolean = false
   if (!isLogged) {
     return (
       <>

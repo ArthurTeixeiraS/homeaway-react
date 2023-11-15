@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import axios from 'axios'
 import { BackGroundImage, LoginContainer } from './styles'
-
-const userLoginURL: string = 'http://localhost:8080/login'
+import { BaseURL } from '../../main'
 
 export function LoginForm() {
   const [formData, setFormData] = useState({
@@ -14,7 +13,7 @@ export function LoginForm() {
     e.preventDefault()
 
     try {
-      const response = await axios.post(userLoginURL, {
+      const response = await axios.post(`${BaseURL}/login`, {
         email: formData.email,
         password: formData.password,
       })

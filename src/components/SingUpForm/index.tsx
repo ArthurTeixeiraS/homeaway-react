@@ -1,7 +1,7 @@
 import { BackGroundImage, SingupContainer } from './styles'
 import React, { useState } from 'react'
 import axios from 'axios'
-const userRegisterUrl: string = 'http://localhost:8080/register'
+import { BaseURL } from '../../main'
 
 export function SingUpForm() {
   const [formData, setFormData] = useState({
@@ -30,11 +30,10 @@ export function SingUpForm() {
       setPasswordError('As senhas não coincidem.')
       return
     }
-    const url = userRegisterUrl
     console.log(formData)
 
     axios
-      .post(url, formData)
+      .post(`${BaseURL}/register`, formData)
       .then((response) => {
         console.log('Resposta da requisição POST:', response.data)
       })

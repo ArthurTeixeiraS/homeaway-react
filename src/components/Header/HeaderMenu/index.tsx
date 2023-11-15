@@ -9,8 +9,7 @@ import logoHomeAway from '../../../assets/logoHomeAway.png'
 import hamburguerMenu from '../../../assets/gg_menu.svg'
 import userCircle from '../../../assets/bx_bxs-user-circle.svg'
 import { FaSearch } from 'react-icons/fa'
-
-const isLogged: boolean = true
+import { isLogged, isHost } from '../../../App'
 
 function verificaData() {
   const hoje = new Date().toISOString().slice(0, 10)
@@ -27,7 +26,6 @@ function abreFechaDropdown() {
 }
 
 export function MainMenuHeader() {
-  const isHost: boolean = true
   if (!isLogged) {
     return (
       <>
