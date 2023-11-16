@@ -45,7 +45,7 @@ export function MainMenuHeader() {
                 <a href="/singup">Encontrar Imóvel</a>
               </li>
               <li>
-                <a href="/singup">Guia para aluguéis</a>
+                <a href="/rentalGuides">Guia para aluguéis</a>
               </li>
             </ul>
 
@@ -115,9 +115,11 @@ export function MainMenuHeader() {
                   />
                 </div>
 
-                <button type="submit">
-                  <FaSearch color="white" size={15} />
-                </button>
+                <a href="/singup">
+                  <button type="button">
+                    <FaSearch color="white" size={15} />
+                  </button>
+                </a>
               </form>
             </div>
           </SearchContainer>

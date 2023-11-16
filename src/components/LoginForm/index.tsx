@@ -13,16 +13,12 @@ export function LoginForm() {
     e.preventDefault()
 
     try {
-      const response = await axios.post(`${BaseURL}/login`, {
-        email: formData.email,
-        password: formData.password,
-      })
+      const response = await axios.post(`${BaseURL}/login`, formData)
 
       const { token } = response.data
 
       localStorage.setItem('token', token)
-      if (response.data.role === 'host') window.location.href = '/addHotel'
-      if (response.data.role === 'tenant') window.location.href = '/'
+      window.location.href = '/user/me'
     } catch (error) {
       console.error('Erro no login:', error)
     }

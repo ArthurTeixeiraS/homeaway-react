@@ -5,7 +5,9 @@ import { BaseURL } from '../../main'
 
 export function SingUpForm() {
   const [formData, setFormData] = useState({
+    name: '',
     email: '',
+    birthDate: new Date(),
     password: '',
     repeatPassword: '',
     role: 'TENANT',
@@ -36,6 +38,7 @@ export function SingUpForm() {
       .post(`${BaseURL}/register`, formData)
       .then((response) => {
         console.log('Resposta da requisição POST:', response.data)
+        window.location.href = '/login'
       })
       .catch((error) => {
         console.error('Erro ao enviar a requisição POST:', error)
@@ -84,6 +87,18 @@ export function SingUpForm() {
             />
             <div className="caption">
               <p>Enviaremos um email para confirmar que é realmente você</p>
+            </div>
+            <input
+              type="date"
+              name="birthDate"
+              id="birthDate"
+              required
+              onChange={handleInputChange}
+            />
+            <div className="caption">
+              <p>
+                Para utilizar nossos serviços, é necessário ser maior de idade
+              </p>
             </div>
             <input
               type="password"

@@ -4,7 +4,7 @@ import banner from '../../assets/backgrounds/banner-blur.png'
 export const SingupContainer = styled.div`
   background-color: ${(props) => props.theme.white};
   width: 40%;
-  height: 80%;
+  height: 90%;
   z-index: 5;
   border-radius: 2.8rem;
   border: 2px solid ${(props) => props.theme['blue-primary']};
@@ -90,7 +90,8 @@ export const SingupContainer = styled.div`
     }
   }
   input[type='password'],
-  input[type='text'] {
+  input[type='text'],
+  input[type='date'] {
     width: 100%;
     outline: none;
     height: 5rem;

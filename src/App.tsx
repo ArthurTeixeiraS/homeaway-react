@@ -28,12 +28,12 @@ export function App() {
           Authorization: `Bearer ${token}`,
         },
       })
-      console.log(response)
+      /* console.log(response) */
       if (response.status === 200) {
-        const role = response.data.role
+        const { role } = response.data
         if (role === 'HOST') isHost = true
         isLogged = true
-        console.log(isLogged, isHost)
+        console.log(token, isLogged, isHost)
         return true
       }
     } catch (error) {

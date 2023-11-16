@@ -162,7 +162,10 @@ export const SearchContainer = styled.div`
   padding: 15% 25%;
   .headers {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 2rem 2rem 0 0;
+    border-bottom: 1px solid ${(props) => props.theme['border-gray']};
     .title {
       h1 {
         font-size: 4vw;
@@ -181,7 +184,7 @@ export const SearchContainer = styled.div`
     width: 100%;
     margin: 1%.5 auto;
     padding: 0.6rem 1rem 0.6rem 3rem;
-    border-radius: 5rem;
+    border-radius: 0 0 2rem 2rem;
     font-size: 1.5rem;
     form {
       display: flex;

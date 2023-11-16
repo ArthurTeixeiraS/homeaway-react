@@ -41,6 +41,7 @@ export function SingUpFormPartner() {
       })
       .then((response) => {
         console.log('Resposta da requisição POST:', response.data)
+        window.location.href = '/login'
       })
       .catch((error) => {
         console.error('Erro ao enviar a requisição POST:', error)
