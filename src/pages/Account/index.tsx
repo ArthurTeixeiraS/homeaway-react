@@ -7,16 +7,16 @@ export function AccountPage() {
   /*  if (!isLogged) {
     window.location.href = '/login'
   } */
-  if (isHost) {
+  if (!isHost) {
     return (
       <Container>
-        <AccountFormTenant />
+        <AccountFormHost />
       </Container>
     )
   } else {
     return (
       <Container>
-        <AccountFormHost />
+        <AccountFormTenant />
       </Container>
     )
   }
