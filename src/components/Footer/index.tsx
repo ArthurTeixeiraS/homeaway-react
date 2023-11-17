@@ -4,7 +4,7 @@ import appleStoreIcon from '../../assets/AppleStoreLogo.png'
 import fbIcon from '../../assets/fb icon.png'
 import twitterIcon from '../../assets/twitter icon.png'
 import instagramIcon from '../../assets/insta icon.png'
-import linkedinIcon from '../../assets/linkedin icoon.png'
+import { Link } from 'react-router-dom'
 
 export function Footer() {
   return (
@@ -32,20 +32,20 @@ export function Footer() {
         <div className="companyList">
           <p>Empresa</p>
           <ul>
-            <li>Sobre Nós</li>
+            <Link to="/aboutHomeaway">Sobre Nós</Link>
             <li>Informações Legais</li>
-            <li>Contate-nos</li>
+            <Link to="mailto:arthurteixeiraserafim@gmail.com">Contate-nos</Link>
             <li>Blogs</li>
           </ul>
         </div>
         <div className="helpList">
           <p>Suporte</p>
           <ul>
-            <li>Encontrar Imóveis</li>
-            <li>Como hospedar</li>
+            <Link to="/findPlaces">Encontrar Imóveis</Link>
+            <Link to="/rentalGuides">Como hospedar</Link>
             <li>Por que o HomeAway?</li>
             <li>FaQs</li>
-            <li>Guias de aluguel</li>
+            <Link to="/howToRental">Guias de aluguel</Link>
           </ul>
         </div>
         <div className="contactInfoList">
@@ -58,7 +58,6 @@ export function Footer() {
               <img src={fbIcon} alt="" />
               <img src={twitterIcon} alt="" />
               <img src={instagramIcon} alt="" />
-              <img src={linkedinIcon} alt="" />
             </div>
           </ul>
         </div>

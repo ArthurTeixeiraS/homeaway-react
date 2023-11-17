@@ -2,6 +2,7 @@ import { FormContainer } from './styles'
 import userIcon from '../../../assets/UserIconHost.png'
 import verifiedIcon from '../../../assets/akar-icons_check.png'
 import cancelIcon from '../../../assets/cancel-icon.png'
+import { Link } from 'react-router-dom'
 
 export function AccountEditHost() {
   return (
@@ -39,12 +40,12 @@ export function AccountEditHost() {
             <input type="date" id="bday" placeholder="Data de Nascimento" />
             <label htmlFor="bday">*Data de Aniversário</label>
             <div className="buttons">
-              <a href="/users/me">
+              <Link to="/users/me">
                 <button className="cancel" type="button">
                   <img src={cancelIcon} alt="" />
                   Cancelar
                 </button>
-              </a>
+              </Link>
               <button className="remove">Remover Conta</button>
               <button className="save">Salvar</button>
             </div>

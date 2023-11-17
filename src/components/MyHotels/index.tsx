@@ -1,5 +1,6 @@
 import { MyHotelsContainer } from './styles'
 import hotelBackGround from '../../assets/backgrounds/hotel-background.png'
+import { Link } from 'react-router-dom'
 
 export function MyHotels() {
   return (
@@ -16,11 +17,11 @@ export function MyHotels() {
               <p>Endereço do Hotel</p>
             </div>
             <div className="buttons">
-              <a href="/users/myHotels/edit">
+              <Link to="/users/myHotels/edit">
                 <button type="button" className="edit">
                   Editar
                 </button>
-              </a>
+              </Link>
               <button type="button" className="remove">
                 Remover
               </button>
@@ -33,11 +34,11 @@ export function MyHotels() {
               <p>Endereço do Hotel</p>
             </div>
             <div className="buttons">
-              <a href="/users/myHotels/edit">
+              <Link to="/users/myHotels/edit">
                 <button type="button" className="edit">
                   Editar
                 </button>
-              </a>
+              </Link>
               <button type="button" className="remove">
                 Remover
               </button>

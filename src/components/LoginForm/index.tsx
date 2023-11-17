@@ -2,6 +2,7 @@ import { useState } from 'react'
 import axios from 'axios'
 import { BackGroundImage, LoginContainer } from './styles'
 import { BaseURL } from '../../main'
+import { Link } from 'react-router-dom'
 
 export function LoginForm() {
   const [formData, setFormData] = useState({
@@ -65,7 +66,7 @@ export function LoginForm() {
               onChange={handleInputChange}
             />
             <p>
-              <a href="/forgotPassword">Esqueci minha senha</a>
+              <Link to="/forgotPassword">Esqueci minha senha</Link>
             </p>
             <div className="buttons">
               <button type="submit" className="continue">

@@ -2,6 +2,7 @@ import { BackGroundImage, SingupContainer } from './styles'
 import React, { useState } from 'react'
 import axios from 'axios'
 import { BaseURL } from '../../main'
+import { Link } from 'react-router-dom'
 
 export function SingUpForm() {
   const [formData, setFormData] = useState({
@@ -61,9 +62,9 @@ export function SingUpForm() {
                 Cliente
               </span>
             </h6>
-            <a href="/login/">
+            <Link to="/login/">
               <span className="login">Já possuo uma conta</span>
-            </a>
+            </Link>
           </div>
           <form action="" className="form" onSubmit={(e) => getFormData(e)}>
             <input
@@ -132,7 +133,7 @@ export function SingUpForm() {
                 Continuar
               </button>
               <button type="button" className="switchButton">
-                <a href="/singupPartner">Quero hospedar</a>
+                <Link to="/singupPartner">Quero hospedar</Link>
               </button>
             </div>
           </form>

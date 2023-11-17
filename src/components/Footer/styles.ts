@@ -73,6 +73,11 @@ export const FooterContainer = styled.footer`
         padding: 0.3rem;
         font-size: 1.2rem;
       }
+      a {
+        text-decoration: none;
+        padding: 0.3rem;
+        font-size: 1.2rem;
+      }
     }
   }
   .helpList {
@@ -86,8 +91,15 @@ export const FooterContainer = styled.footer`
     }
     ul {
       padding: 1rem 0;
+      display: flex;
+      flex-direction: column;
       li {
         list-style: none;
+        padding: 0.3rem;
+        font-size: 1.2rem;
+      }
+      a {
+        text-decoration: none;
         padding: 0.3rem;
         font-size: 1.2rem;
       }

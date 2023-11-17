@@ -1,4 +1,15 @@
 import styled from 'styled-components'
+import banner from '../../assets/backgrounds/banner-blur.png'
+
+export const BackGroundImage = styled.div`
+  width: 100%;
+  height: auto;
+  background-image: url(${banner});
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+`
 
 export const Container = styled.div`
   display: flex;
@@ -6,6 +17,7 @@ export const Container = styled.div`
   align-items: center;
   padding: 5rem 8rem;
   form {
+    background-color: white;
     border: 1px solid ${(props) => props.theme['yellow-secondary']};
     border-radius: 1.5rem;
     padding: 2.5rem;
@@ -39,6 +51,7 @@ export const Container = styled.div`
           }
           &:hover {
             transform: scale(1.1);
+            cursor: pointer;
           }
         }
         div {
@@ -136,7 +149,8 @@ export const Container = styled.div`
     }
     .submit {
       display: flex;
-      justify-content: center;
+      justify-content: space-evenly;
+      align-items: center;
       button[type='submit'] {
         width: 40%;
         margin: 3rem 0 0 0;
@@ -148,9 +162,27 @@ export const Container = styled.div`
         background-color: ${(props) => props.theme['yellow-secondary']};
         border: 0;
         border-radius: 1rem;
+        &:hover {
+          filter: brightness(97%);
+          cursor: pointer;
+        }
       }
-      &:hover {
-        filter: brightness(97%);
+      button[type='button'] {
+        width: 100%;
+        margin: 3rem 0 0 0;
+        align-items: center;
+        margin-right: 2rem;
+        margin-right: 1.5rem;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: ${(props) => props.theme.black};
+        background-color: transparent;
+        border: 0;
+        border-radius: 1rem;
+        &:hover {
+          filter: brightness(97%);
+          cursor: pointer;
+        }
       }
     }
   }

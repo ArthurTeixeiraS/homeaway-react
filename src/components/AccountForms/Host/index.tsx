@@ -1,6 +1,7 @@
 import { FormContainer } from './styles'
 import userIcon from '../../../assets/UserIconHost.png'
 import verifiedIcon from '../../../assets/akar-icons_check.png'
+import { Link } from 'react-router-dom'
 
 export function AccountFormHost() {
   return (
@@ -26,15 +27,15 @@ export function AccountFormHost() {
             <p>Cadastrado em: DATADECADASTRO</p>
           </div>
           <div className="divButton">
-            <a href="/users/edit">
+            <Link to="/users/edit">
               <button>Editar Perfil</button>
-            </a>
-            <a href="/users/addHotel">
+            </Link>
+            <Link to="/users/addHotel">
               <button>Adicionar um hotel</button>
-            </a>
+            </Link>
           </div>
           <div className="link">
-            <a href="/users/myHotels">Seus Hotéis</a>
+            <Link to="/users/myHotels">Seus Hotéis</Link>
           </div>
         </div>
       </div>

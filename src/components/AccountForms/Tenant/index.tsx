@@ -1,6 +1,7 @@
 import { FormContainer } from './styles'
 import userIcon from '../../../assets/userIcon.png'
 import verifiedIcon from '../../../assets/akar-icons_check.png'
+import { Link } from 'react-router-dom'
 
 export function AccountFormTenant() {
   return (
@@ -26,12 +27,12 @@ export function AccountFormTenant() {
             <p>Cadastrado em: DATADECADASTRO</p>
           </div>
           <div className="divButton">
-            <a href="/users/edit">
+            <Link to="/users/edit">
               <button>Editar Perfil</button>
-            </a>
+            </Link>
           </div>
           <div className="link">
-            <a href="/client/reservations">Suas Reservas</a>
+            <Link to="/client/reservations">Suas Reservas</Link>
           </div>
         </div>
       </div>

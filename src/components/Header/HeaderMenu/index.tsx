@@ -10,6 +10,7 @@ import hamburguerMenu from '../../../assets/gg_menu.svg'
 import userCircle from '../../../assets/bx_bxs-user-circle.svg'
 import { FaSearch } from 'react-icons/fa'
 import { isLogged, isHost } from '../../../App'
+import { Link } from 'react-router-dom'
 
 function verificaData() {
   const hoje = new Date().toISOString().slice(0, 10)
@@ -32,26 +33,26 @@ export function MainMenuHeader() {
         <HeaderContainer>
           <nav className="menu-content">
             <div className="logo">
-              <a href="/">
+              <Link to="/">
                 <img src={logoHomeAway} alt="" width="70px" height="70px" />
                 <h4>
                   Home<span>Away</span>
                 </h4>
-              </a>
+              </Link>
             </div>
 
             <ul className="nav-links">
               <li>
-                <a href="/singup">Encontrar Imóvel</a>
+                <Link to="/singup">Encontrar Imóvel</Link>
               </li>
               <li>
-                <a href="/rentalGuides">Guia para aluguéis</a>
+                <Link to="/rentalGuides">Guia para aluguéis</Link>
               </li>
             </ul>
 
             <InitialOptions>
               <BecomeHostButton>
-                <a href="/singupPartner">Torne-se Parceiro</a>
+                <Link to="/singupPartner">Torne-se Parceiro</Link>
               </BecomeHostButton>
               <div className="initialCard" onClick={abreFechaDropdown}>
                 <img src={hamburguerMenu} alt="" />
@@ -60,10 +61,10 @@ export function MainMenuHeader() {
               <div className="dropdown disabled">
                 <ul className="dropdown-content">
                   <li>
-                    <a href="/login">Entrar</a>
+                    <Link to="/login">Entrar</Link>
                   </li>
                   <li>
-                    <a href="/singup">Cadastrar-se</a>
+                    <Link to="/singup">Cadastrar-se</Link>
                   </li>
                 </ul>
               </div>
@@ -115,11 +116,11 @@ export function MainMenuHeader() {
                   />
                 </div>
 
-                <a href="/singup">
+                <Link to="/singup">
                   <button type="button">
                     <FaSearch color="white" size={15} />
                   </button>
-                </a>
+                </Link>
               </form>
             </div>
           </SearchContainer>
@@ -132,29 +133,20 @@ export function MainMenuHeader() {
         <HeaderContainer>
           <nav className="menu-content">
             <div className="logo">
-              <a href="/">
+              <Link to="/">
                 <img src={logoHomeAway} alt="" width="70px" height="70px" />
                 <h4>
                   Home<span>Away</span>
                 </h4>
-              </a>
+              </Link>
             </div>
 
             {/*  <ul className="nav-links">
-              <li>
-                <a href="/findPlaces"></a>
-              </li>
-              <li>
-                <a href="/rentGuide">Guia para aluguéis</a>
-              </li>
-              <li>
-                <a href="/myHotels">Meus Hotéis</a>
-              </li>
             </ul> */}
 
             <InitialOptions>
               <BecomeHostButton>
-                <a href="/addHotel">Adicione Hotéis</a>
+                <Link to="/addHotel">Adicione Hotéis</Link>
               </BecomeHostButton>
               <div className="initialCard" onClick={abreFechaDropdown}>
                 <img src={hamburguerMenu} alt="" />
@@ -163,16 +155,16 @@ export function MainMenuHeader() {
               <div className="dropdown disabled">
                 <ul className="dropdown-content">
                   <li>
-                    <a href="/login">Entrar</a>
+                    <Link to="/login">Entrar</Link>
                   </li>
                   <li>
-                    <a href="/singup">Cadastrar-se</a>
+                    <Link to="/singup">Cadastrar-se</Link>
                   </li>
                   <li>
-                    <a href="/myHotels">Meus Hotéis</a>
+                    <Link to="/myHotels">Meus Hotéis</Link>
                   </li>
                   <li>
-                    <a href="/addHotel">Adicionar um Hotel</a>
+                    <Link to="/addHotel">Adicionar um Hotel</Link>
                   </li>
                 </ul>
               </div>
@@ -183,7 +175,7 @@ export function MainMenuHeader() {
             <div className="headers">
               <div className="title">
                 <h1>
-                  <a href="/roomRegister">Buscar</a>
+                  <Link to="/roomRegister">Buscar</Link>
                 </h1>
               </div>
             </div>
@@ -241,26 +233,26 @@ export function MainMenuHeader() {
         <HeaderContainer>
           <nav className="menu-content">
             <div className="logo">
-              <a href="/">
+              <Link to="/">
                 <img src={logoHomeAway} alt="" width="70px" height="70px" />
                 <h4>
                   Home<span>Away</span>
                 </h4>
-              </a>
+              </Link>
             </div>
 
             <ul className="nav-links">
               <li>
-                <a href="/findPlaces">Encontrar Imóvel</a>
+                <Link to="/findPlaces">Encontrar Imóvel</Link>
               </li>
               <li>
-                <a href="/rentalGuide">Guia para aluguéis</a>
+                <Link to="/rentalGuide">Guia para aluguéis</Link>
               </li>
             </ul>
 
             <InitialOptions>
               <BecomeHostButton>
-                <a href="/singupPartner">Torne-se Parceiro</a>
+                <Link to="/singupPartner">Torne-se Parceiro</Link>
               </BecomeHostButton>
               <div className="initialCard" onClick={abreFechaDropdown}>
                 <img src={hamburguerMenu} alt="" />
@@ -269,7 +261,7 @@ export function MainMenuHeader() {
               <div className="dropdown disabled">
                 <ul className="dropdown-content">
                   <li>
-                    <a href="/login">Sair</a>
+                    <Link to="/login">Sair</Link>
                   </li>
                 </ul>
               </div>

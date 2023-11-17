@@ -4,6 +4,7 @@ import logoHomeAway from '../../assets/logoHomeAway.png'
 import hamburguerMenu from '../../assets/gg_menu.svg'
 import userCircle from '../../assets/bx_bxs-user-circle.svg'
 import { isLogged, isHost } from '../../App'
+import { Link } from 'react-router-dom'
 
 function abreFechaDropdown() {
   const drop = document.querySelector('.dropdown')
@@ -20,10 +21,10 @@ export function Header() {
         <HeaderContainer>
           <div className="logo">
             <h1>
-              <a href="/" className="logoName">
+              <Link to="/" className="logoName">
                 <img src={logoHomeAway} width={70} height={70} alt="" />
                 Home<span>Away</span>
-              </a>
+              </Link>
             </h1>
           </div>
 
@@ -31,10 +32,10 @@ export function Header() {
             <nav>
               <ul>
                 <li>
-                  <a href="/singup">Encontrar Imóvel</a>
+                  <Link to="/singup">Encontrar Imóvel</Link>
                 </li>
                 <li>
-                  <a href="/singup">Guia para aluguéis</a>
+                  <Link to="/singup">Guia para aluguéis</Link>
                 </li>
               </ul>
             </nav>
@@ -42,7 +43,7 @@ export function Header() {
 
           <InitialOptions>
             <BecomeHostButton>
-              <a href="/singupPartner">Torne-se Parceiro</a>
+              <Link to="/singupPartner">Torne-se Parceiro</Link>
             </BecomeHostButton>
             <div className="initialCard" onClick={abreFechaDropdown}>
               <img src={hamburguerMenu} alt="" />
@@ -51,10 +52,10 @@ export function Header() {
             <div className="dropdown disabled">
               <ul className="dropdown-content">
                 <li>
-                  <a href="/login">Entrar</a>
+                  <Link to="/login">Entrar</Link>
                 </li>
                 <li>
-                  <a href="/singup">Cadastrar-se</a>
+                  <Link to="/singup">Cadastrar-se</Link>
                 </li>
               </ul>
             </div>
@@ -68,16 +69,16 @@ export function Header() {
         <HeaderContainer>
           <div className="logo">
             <h1>
-              <a href="/" className="logoName">
+              <Link to="/" className="logoName">
                 <img src={logoHomeAway} width={70} height={70} alt="" />
                 Home<span>Away</span>
-              </a>
+              </Link>
             </h1>
           </div>
 
           <InitialOptions>
             <BecomeHostButton>
-              <a href="/addHotel">Adicione Hotéis</a>
+              <Link to="/addHotel">Adicione Hotéis</Link>
             </BecomeHostButton>
             <div className="initialCard" onClick={abreFechaDropdown}>
               <img src={hamburguerMenu} alt="" />
@@ -86,13 +87,13 @@ export function Header() {
             <div className="dropdown disabled">
               <ul className="dropdown-content">
                 <li>
-                  <a href="/singup">Adicionar Hotéis</a>
+                  <Link to="/singup">Adicionar Hotéis</Link>
                 </li>
                 <li>
-                  <a href="/singup">Meus Hotéis</a>
+                  <Link to="/singup">Meus Hotéis</Link>
                 </li>
                 <li>
-                  <a href="/login">Sair</a>
+                  <Link to="/login">Sair</Link>
                 </li>
               </ul>
             </div>
@@ -106,10 +107,10 @@ export function Header() {
         <HeaderContainer>
           <div className="logo">
             <h1>
-              <a href="/" className="logoName">
+              <Link to="/" className="logoName">
                 <img src={logoHomeAway} width={70} height={70} alt="" />
                 Home<span>Away</span>
-              </a>
+              </Link>
             </h1>
           </div>
 
@@ -117,10 +118,10 @@ export function Header() {
             <nav>
               <ul>
                 <li>
-                  <a href="/findPlaces">Encontrar Imóvel</a>
+                  <Link to="/findPlaces">Encontrar Imóvel</Link>
                 </li>
                 <li>
-                  <a href="/rentGuides">Guia para aluguéis</a>
+                  <Link to="/rentGuides">Guia para aluguéis</Link>
                 </li>
               </ul>
             </nav>
@@ -128,7 +129,7 @@ export function Header() {
 
           <InitialOptions>
             <BecomeHostButton>
-              <a href="/singupPartner">Torne-se Parceiro</a>
+              <Link to="/singupPartner">Torne-se Parceiro</Link>
             </BecomeHostButton>
             <div className="initialCard" onClick={abreFechaDropdown}>
               <img src={hamburguerMenu} alt="" />
@@ -137,7 +138,7 @@ export function Header() {
             <div className="dropdown disabled">
               <ul className="dropdown-content">
                 <li>
-                  <a href="/login">Sair</a>
+                  <Link to="/login">Sair</Link>
                 </li>
               </ul>
             </div>
