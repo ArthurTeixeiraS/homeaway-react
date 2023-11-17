@@ -9,6 +9,7 @@ import { HotelRegister } from '../pages/HotelRegistration'
 import { MyHotelsPage } from '../pages/MyHotels'
 import { AccountPage } from '../pages/Account'
 import { AccountEditPage } from '../pages/AccountEdit'
+import { HotelEditPage } from '../pages/HotelEdit'
 
 export function Router() {
   return (
@@ -20,8 +21,9 @@ export function Router() {
           <Route path="/singup" element={<Register />} />
           <Route path="/singupPartner" element={<RegisterPartner />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/addHotel" element={<HotelRegister />} />
-          <Route path="/partner/myHotels" element={<MyHotelsPage />} />
+          <Route path="/users/addHotel" element={<HotelRegister />} />
+          <Route path="/users/myHotels" element={<MyHotelsPage />} />
+          <Route path="/users/myHotels/edit" element={<HotelEditPage />} />
           <Route path="/users/me" element={<AccountPage />} />
           <Route path="/users/edit" element={<AccountEditPage />} />
         </Route>

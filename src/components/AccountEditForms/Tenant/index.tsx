@@ -1,9 +1,9 @@
 import { FormContainer } from './styles'
-import userIcon from '../../../assets/UserIconHost.png'
+import userIcon from '../../../assets/UserIconTenant.png'
 import verifiedIcon from '../../../assets/akar-icons_check.png'
 import cancelIcon from '../../../assets/cancel-icon.png'
 
-export function AccountEditHost() {
+export function AccountEditTenant() {
   return (
     <FormContainer>
       <div className="infoDiv">
@@ -18,7 +18,7 @@ export function AccountEditHost() {
               <img src={verifiedIcon} alt="" />
               <p>Email Verificado</p>
             </div>
-            <p>Hospedeiro/Parceiro</p>
+            <p>Hóspede/Parceiro</p>
           </div>
         </div>
         <div className="content">

@@ -71,7 +71,7 @@ export const FormContainer = styled.div`
           outline: none;
           height: 5rem;
           border-radius: 2rem;
-          border: 1px solid ${(props) => props.theme['yellow-secondary']};
+          border: 1px solid ${(props) => props.theme['blue-primary']};
           padding: 1rem;
           font-size: 1.5rem;
           font-weight: bold;
@@ -82,7 +82,7 @@ export const FormContainer = styled.div`
           outline: none;
           height: 5rem;
           border-radius: 2rem;
-          border: 1px solid ${(props) => props.theme['yellow-secondary']};
+          border: 1px solid ${(props) => props.theme['blue-primary']};
           padding: 1rem;
           font-size: 1.5rem;
           color: ${(props) => props.theme.black};
@@ -139,19 +139,19 @@ export const FormContainer = styled.div`
           }
           .save {
             background-color: transparent;
-            border: 1px solid ${(props) => props.theme['yellow-secondary']};
+            border: 1px solid ${(props) => props.theme['blue-primary']};
             padding: 1rem;
             border-radius: 1rem;
             font-size: 1.4rem;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: ${(props) => props.theme['yellow-secondary']};
+            color: ${(props) => props.theme['blue-primary']};
             transition: all 0.2s ease-in-out;
             &:hover {
               cursor: pointer;
               color: white;
-              background-color: ${(props) => props.theme['yellow-secondary']};
+              background-color: ${(props) => props.theme['blue-primary']};
             }
           }
         }

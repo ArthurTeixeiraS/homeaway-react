@@ -29,9 +29,12 @@ export function AccountFormHost() {
             <a href="/users/edit">
               <button>Editar Perfil</button>
             </a>
+            <a href="/users/addHotel">
+              <button>Adicionar um hotel</button>
+            </a>
           </div>
           <div className="link">
-            <a href="/partner/myHotels">Seus Hotéis</a>
+            <a href="/users/myHotels">Seus Hotéis</a>
           </div>
         </div>
       </div>
