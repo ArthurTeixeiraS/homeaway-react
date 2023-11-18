@@ -7,7 +7,7 @@ export function AccountEditPage() {
   /*   if (!isLogged) {
     window.location.href = '/login'
   } */
-  if (isHost) {
+  if (!isHost) {
     return (
       <Container>
         <AccountEditHost />

@@ -2,8 +2,7 @@ import { useState, ChangeEvent, FormEvent } from 'react'
 import { BackGroundImage, Container } from './styles'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-
-const API_URL = 'https://localhost:8080'
+import { BaseURL } from '../../main'
 
 interface FormData {
   name: string
@@ -16,7 +15,7 @@ interface FormData {
   allowsPets: boolean
   hasWifi: boolean
   hasRoomService: boolean
-  image: File | null
+  /*   image: File | null */
 }
 
 export function HotelForm() {
@@ -31,7 +30,7 @@ export function HotelForm() {
     allowsPets: false,
     hasWifi: false,
     hasRoomService: false,
-    image: null,
+    /*     image: null, */
   })
 
   const handleInputChange = (
@@ -48,10 +47,10 @@ export function HotelForm() {
     setFormData((prevData) => ({ ...prevData, [name]: checked }))
   }
 
-  const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
+  /*  const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files && event.target.files[0]
     setFormData((prevData) => ({ ...prevData, image: file }))
-  }
+  } */
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault()
@@ -68,19 +67,17 @@ export function HotelForm() {
     formDataToSend.append('hasWifi', String(formData.hasWifi))
     formDataToSend.append('hasRoomService', String(formData.hasRoomService))
 
-    if (formData.image) {
+    /* if (formData.image) {
       formDataToSend.append('image', formData.image)
-    }
-
+    } */
+    const id = crypto.randomUUID()
     try {
       console.log('Dados enviados:', formData)
-      const response = await axios.post(API_URL, {
-        method: 'POST',
-        body: formDataToSend,
-      })
+      const response = await axios.post(`${BaseURL}/hotels`, formData)
 
       if (response.status === 200) {
         console.log('Registro enviado com sucesso!')
+        window.location.href = `/users/addHotel/${id}/image`
       } else {
         console.error('Erro ao enviar o registro. Tente novamente.')
       }
@@ -115,7 +112,7 @@ export function HotelForm() {
               minLength={20}
             ></textarea>
 
-            <div className="image">
+            {/* <div className="image">
               <label className="labelImage" htmlFor="mainImage">
                 <p>Selecione uma imagem:</p>
               </label>
@@ -138,7 +135,7 @@ export function HotelForm() {
                   />
                 </>
               )}
-            </div>
+            </div> */}
 
             <div className="streetNumber">
               <label>Rua:</label>

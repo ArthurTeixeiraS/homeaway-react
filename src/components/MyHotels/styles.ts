@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const MyHotelsContainer = styled.div`
-  padding: 6% 8%;
+  padding: 4% 8%;
   .titleContainer {
     display: flex;
     justify-content: flex-start;
@@ -11,13 +11,6 @@ export const MyHotelsContainer = styled.div`
     }
   }
   .hotelsContainer {
-    .hotelCard {
-      transition: all 0.2s ease-in-out;
-      padding: 1rem;
-      &:hover {
-        transform: scale(1.05);
-      }
-    }
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 2rem 0;
