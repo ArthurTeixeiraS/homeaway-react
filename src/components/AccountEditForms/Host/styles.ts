@@ -86,8 +86,9 @@ export const FormContainer = styled.div`
           padding: 1rem;
           font-size: 1.5rem;
           color: ${(props) => props.theme.black};
+          font-weight: bold;
         }
-        #cpf {
+        .cpf {
           &:hover {
             cursor: not-allowed;
           }

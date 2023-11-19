@@ -1,38 +1,35 @@
-import { useState } from 'react'
-import axios from 'axios'
+import { useContext, useState } from 'react'
 import { BackGroundImage, LoginContainer } from './styles'
-import { BaseURL } from '../../main'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { AuthContext } from '../../contexts/Auth/AuthContext'
 
 export function LoginForm() {
+  const auth = useContext(AuthContext)
+  const navigate = useNavigate()
+
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   })
 
-  const loginUser = async (e: React.FormEvent) => {
-    e.preventDefault()
-
-    try {
-      const response = await axios.post(`${BaseURL}/login`, formData)
-
-      const { token } = response.data
-
-      localStorage.setItem('token', token)
-      window.location.href = '/user/me'
-    } catch (error) {
-      console.error('Erro no login:', error)
-    }
-  }
-
-  const handleInputChange = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
-  ) => {
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target
     setFormData({
       ...formData,
       [name]: value,
     })
+  }
+
+  const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    if (formData.email && formData.password) {
+      const isLogged = await auth.singin(formData.email, formData.password)
+      if (isLogged) {
+        navigate('/users/me')
+      } else {
+        alert('Falha ao logar, tente novamente.')
+      }
+    }
   }
   return (
     <BackGroundImage>
@@ -42,7 +39,7 @@ export function LoginForm() {
           <p>É bom ter você aqui novamente!</p>
         </div>
         <div className="loginInput">
-          <form action="" className="form" onSubmit={loginUser}>
+          <form action="" className="form" onSubmit={(e) => handleLogin(e)}>
             <label htmlFor="email">Digite seu email</label>
             <input
               type="email"

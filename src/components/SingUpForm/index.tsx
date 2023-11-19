@@ -10,6 +10,7 @@ export function SingUpForm() {
     email: '',
     birthDate: new Date(),
     password: '',
+    document: '',
     repeatPassword: '',
     role: 'TENANT',
   })
@@ -99,6 +100,19 @@ export function SingUpForm() {
             <div className="caption">
               <p>
                 Para utilizar nossos serviços, é necessário ser maior de idade
+              </p>
+            </div>
+            <input
+              type="text"
+              name="document"
+              id="document"
+              placeholder="000.000.000-00"
+              required
+              onChange={handleInputChange}
+            />
+            <div className="caption">
+              <p>
+                Para sua segurança e dos demais usuários, insira seu CPF ou CNPJ
               </p>
             </div>
             <input

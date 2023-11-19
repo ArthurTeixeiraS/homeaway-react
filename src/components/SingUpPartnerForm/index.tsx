@@ -1,14 +1,16 @@
 import { BackGroundImage, SingupContainer } from './styles'
 import React, { useState } from 'react'
 import axios from 'axios'
-import { BaseURL } from '../../main'
 import { Link } from 'react-router-dom'
+import { BaseURL } from '../../main'
 
 export function SingUpFormPartner() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    birthDate: new Date(),
     password: '',
+    document: '',
     repeatPassword: '',
     role: 'HOST',
   })
@@ -99,6 +101,19 @@ export function SingUpFormPartner() {
             <div className="caption">
               <p>
                 Para utilizar nossos serviços, é necessário ser maior de idade
+              </p>
+            </div>
+            <input
+              type="text"
+              name="document"
+              id="document"
+              placeholder="000.000.000-00"
+              required
+              onChange={handleInputChange}
+            />
+            <div className="caption">
+              <p>
+                Para sua segurança e dos demais usuários, insira seu CPF ou CNPJ
               </p>
             </div>
             <input

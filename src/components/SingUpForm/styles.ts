@@ -4,11 +4,11 @@ import banner from '../../assets/backgrounds/banner-blur.png'
 export const SingupContainer = styled.div`
   background-color: ${(props) => props.theme.white};
   width: 40%;
-  height: 90%;
+  height: 85%;
   z-index: 5;
   border-radius: 2.8rem;
   border: 2px solid ${(props) => props.theme['blue-primary']};
-  padding: 3rem;
+  padding: 2rem;
   margin-top: 3.5rem;
   @media screen and (min-width: 1365px) {
     height: 75%;
@@ -122,7 +122,7 @@ export const SingupContainer = styled.div`
 
 export const BackGroundImage = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 120vh;
   background-image: url(${banner});
   background-repeat: no-repeat;
   background-size: cover;

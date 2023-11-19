@@ -37,7 +37,9 @@ export function HotelEditComponent() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${BaseURL}/hotels/${idHotel}`)
+        const response = await axios.get(
+          `${process.env.BASE_URL}/hotels/${idHotel}`,
+        )
         const hotelData = response.data
         setFormData({
           name: hotelData.name,
@@ -101,10 +103,10 @@ export function HotelEditComponent() {
 
     try {
       console.log('Dados enviados:', formData)
-      const response = await axios.post(BaseURL, {
-        method: 'POST',
-        body: formDataToSend,
-      })
+      const response = await axios.post(
+        `${BaseURL}/${idHotel}/edit`,
+        formDataToSend,
+      )
 
       if (response.status === 200) {
         console.log('Registro enviado com sucesso!')
