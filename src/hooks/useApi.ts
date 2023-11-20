@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-  baseURL: 'https://629b-177-200-4-83.ngrok-free.app/api',
+  baseURL: 'https://7abc-177-200-4-83.ngrok-free.app/api',
 })
 
 export const UseAPI = () => ({
@@ -9,9 +9,9 @@ export const UseAPI = () => ({
     const response = await api.get('/users/me', {
       headers: {
         Authorization: `Bearer ${token}`,
+        'ngrok-skip-browser-warning': 'true',
       },
     })
-    /*     console.log(response.data) */
     return response.data
   },
 
@@ -20,12 +20,17 @@ export const UseAPI = () => ({
       email,
       password,
     })
-    console.log(response.data)
     return response.data
   },
 
-  /* logout: async () => {
-    const response = await api.post('/logout')
+  findHotels: async (token: string) => {
+    const response = await api.get('/hotels/me', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'ngrok-skip-browser-warning': 'true',
+        'Content-Type': 'multipart/form-data',
+      },
+    })
     return response.data
-  }, */
+  },
 })

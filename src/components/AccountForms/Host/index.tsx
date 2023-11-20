@@ -7,7 +7,7 @@ import { AuthContext } from '../../../contexts/Auth/AuthContext'
 
 export function AccountFormHost() {
   const auth = useContext(AuthContext)
-  console.log(auth)
+  const registrationDate = auth.user?.registrationDate
   return (
     <FormContainer>
       <div className="infoDiv">
@@ -28,7 +28,7 @@ export function AccountFormHost() {
         <div className="content">
           <div className="userInfos">
             <h2>Olá, {auth.user?.name}</h2>
-            <p>Cadastrado em: DATADECADASTRO</p>
+            <p>Cadastrado em: {registrationDate?.split('T')[0]}</p>
           </div>
           <div className="divButton">
             <Link to="/users/edit">

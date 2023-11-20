@@ -40,6 +40,7 @@ export function SingUpForm() {
       .post(`${BaseURL}/register`, formData)
       .then((response) => {
         console.log('Resposta da requisição POST:', response.data)
+        alert('Cadastro efetuado com sucesso!')
         window.location.href = '/login'
       })
       .catch((error) => {

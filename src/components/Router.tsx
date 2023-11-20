@@ -16,6 +16,7 @@ import { RoomRegister } from '../pages/Room/RoomRegister'
 import { RoomImageSendForm } from './Room/RoomRegister/ImageForm'
 import { RequireAuth } from '../contexts/Auth/RequireAuth'
 import { FindPlaces } from './FindPlaces'
+import { ImageEditForm } from './HotelEdit/ImageForm'
 
 export function Router() {
   return (
@@ -88,6 +89,14 @@ export function Router() {
             element={
               <RequireAuth>
                 <HotelEditPage />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/users/myHotels/edit/:id/image"
+            element={
+              <RequireAuth>
+                <ImageEditForm />
               </RequireAuth>
             }
           />

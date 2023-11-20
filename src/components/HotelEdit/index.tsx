@@ -1,7 +1,7 @@
 import { useState, ChangeEvent, FormEvent, useEffect } from 'react'
 import { BackGroundImage, Container } from './styles'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { BaseURL } from '../../main'
 interface FormData {
   name: string
@@ -10,11 +10,10 @@ interface FormData {
   number: string
   neighbourhood: string
   city: string
-  UF: string
+  uf: string
   allowsPets: boolean
   hasWifi: boolean
   hasRoomService: boolean
-  image: File | null
 }
 
 export function HotelEditComponent() {
@@ -26,20 +25,22 @@ export function HotelEditComponent() {
     number: '',
     neighbourhood: '',
     city: '',
-    UF: '',
+    uf: '',
     allowsPets: false,
     hasWifi: false,
     hasRoomService: false,
-    image: null,
   })
   const [dataLoaded, setDataLoaded] = useState(false)
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `${process.env.BASE_URL}/hotels/${idHotel}`,
-        )
+        const response = await axios.get(`${BaseURL}/hotels/${idHotel}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('authToken')}`,
+            'ngrok-skip-browser-warning': 'true',
+          },
+        })
         const hotelData = response.data
         setFormData({
           name: hotelData.name,
@@ -48,20 +49,21 @@ export function HotelEditComponent() {
           number: hotelData.number,
           neighbourhood: hotelData.neighbourhood,
           city: hotelData.city,
-          UF: hotelData.UF,
+          uf: hotelData.uf,
           allowsPets: hotelData.allowsPets,
           hasWifi: hotelData.hasWifi,
           hasRoomService: hotelData.hasRoomService,
-          image: null,
         })
 
         setDataLoaded(true)
+        console.log(response)
       } catch (error) {
         console.error('Erro ao obter dados do hotel:', error)
       }
     }
     fetchData()
-  }, [idHotel])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const handleInputChange = (
     event: ChangeEvent<
@@ -77,11 +79,12 @@ export function HotelEditComponent() {
     setFormData((prevData) => ({ ...prevData, [name]: checked }))
   }
 
-  const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
+  /* const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files && event.target.files[0]
     setFormData((prevData) => ({ ...prevData, image: file }))
-  }
+  } */
 
+  const navigate = useNavigate()
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault()
     const formDataToSend = new FormData()
@@ -92,24 +95,28 @@ export function HotelEditComponent() {
     formDataToSend.append('number', formData.number)
     formDataToSend.append('neighbourhood', formData.neighbourhood)
     formDataToSend.append('city', formData.city)
-    formDataToSend.append('UF', formData.UF)
+    formDataToSend.append('uf', formData.uf)
     formDataToSend.append('allowsPets', String(formData.allowsPets))
     formDataToSend.append('hasWifi', String(formData.hasWifi))
     formDataToSend.append('hasRoomService', String(formData.hasRoomService))
 
-    if (formData.image) {
-      formDataToSend.append('image', formData.image)
-    }
-
     try {
       console.log('Dados enviados:', formData)
-      const response = await axios.post(
-        `${BaseURL}/${idHotel}/edit`,
+      const response = await axios.put(
+        `${BaseURL}/hotels/${idHotel}`,
         formDataToSend,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('authToken')}`,
+            'ngrok-skip-browser-warning': 'true',
+            'Content-Type': 'application/json',
+          },
+        },
       )
 
       if (response.status === 200) {
         console.log('Registro enviado com sucesso!')
+        navigate(`/users/myHotels/edit/${idHotel}/image`)
       } else {
         console.error('Erro ao enviar o registro. Tente novamente.')
       }
@@ -145,7 +152,7 @@ export function HotelEditComponent() {
                 minLength={20}
               ></textarea>
 
-              <div className="image">
+              {/*   <div className="image">
                 <label className="labelImage" htmlFor="mainImage">
                   <p>Selecione uma imagem:</p>
                 </label>
@@ -168,7 +175,7 @@ export function HotelEditComponent() {
                     />
                   </>
                 )}
-              </div>
+              </div> */}
 
               <div className="streetNumber">
                 <label>Rua:</label>
@@ -212,8 +219,8 @@ export function HotelEditComponent() {
 
                 <select
                   required
-                  name="UF"
-                  value={formData.UF}
+                  name="uf"
+                  value={formData.uf}
                   onChange={handleInputChange}
                 >
                   <option value="Acre">AC</option>

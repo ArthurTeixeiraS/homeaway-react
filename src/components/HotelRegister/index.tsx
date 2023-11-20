@@ -1,8 +1,9 @@
-import { useState, ChangeEvent, FormEvent } from 'react'
+import { useState, ChangeEvent, FormEvent, useContext } from 'react'
 import { BackGroundImage, Container } from './styles'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { BaseURL } from '../../main'
+import { AuthContext } from '../../contexts/Auth/AuthContext'
 
 interface FormData {
   name: string
@@ -11,7 +12,7 @@ interface FormData {
   number: string
   neighbourhood: string
   city: string
-  UF: string
+  uf: string
   allowsPets: boolean
   hasWifi: boolean
   hasRoomService: boolean
@@ -26,12 +27,14 @@ export function HotelForm() {
     number: '',
     neighbourhood: '',
     city: '',
-    UF: '',
+    uf: '',
     allowsPets: false,
     hasWifi: false,
     hasRoomService: false,
     /*     image: null, */
   })
+
+  const auth = useContext(AuthContext)
 
   const handleInputChange = (
     event: ChangeEvent<
@@ -62,7 +65,7 @@ export function HotelForm() {
     formDataToSend.append('number', formData.number)
     formDataToSend.append('neighbourhood', formData.neighbourhood)
     formDataToSend.append('city', formData.city)
-    formDataToSend.append('UF', formData.UF)
+    formDataToSend.append('uf', formData.uf)
     formDataToSend.append('allowsPets', String(formData.allowsPets))
     formDataToSend.append('hasWifi', String(formData.hasWifi))
     formDataToSend.append('hasRoomService', String(formData.hasRoomService))
@@ -70,14 +73,17 @@ export function HotelForm() {
     /* if (formData.image) {
       formDataToSend.append('image', formData.image)
     } */
-    const id = crypto.randomUUID()
     try {
       console.log('Dados enviados:', formData)
-      const response = await axios.post(`${BaseURL}/hotels`, formData)
+      const response = await axios.post(`${BaseURL}/hotels`, formData, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('authToken')}`,
+        },
+      })
 
       if (response.status === 200) {
-        console.log('Registro enviado com sucesso!')
-        window.location.href = `/users/addHotel/${id}/image`
+        console.log(response.data)
+        window.location.href = `/users/addHotel/${response.data.id}/image`
       } else {
         console.error('Erro ao enviar o registro. Tente novamente.')
       }
@@ -91,6 +97,7 @@ export function HotelForm() {
       <Container>
         <form onSubmit={handleSubmit}>
           <h1>Cadastro de hotel</h1>
+          <p>para: {auth.user?.name}</p>
           <div className="inputs">
             <label>Nome do Hotel:</label>
             <input
@@ -166,7 +173,7 @@ export function HotelForm() {
               required
             />
 
-            <div className="cityUF">
+            <div className="cityuf">
               <label>Cidade:</label>
               <label>Estado:</label>
               <input
@@ -179,8 +186,8 @@ export function HotelForm() {
 
               <select
                 required
-                name="UF"
-                value={formData.UF}
+                name="uf"
+                value={formData.uf}
                 onChange={handleInputChange}
               >
                 <option disabled selected>

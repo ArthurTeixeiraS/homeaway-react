@@ -8,6 +8,10 @@ export const MyHotelsContainer = styled.div`
     h1 {
       font-size: 4rem;
       padding: 0 0 2rem 0;
+      span {
+        font-size: 2rem;
+        font-weight: normal;
+      }
     }
   }
   .hotelsContainer {

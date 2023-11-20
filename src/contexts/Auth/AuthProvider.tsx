@@ -10,16 +10,17 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
   useEffect(() => {
     const validateToken = async () => {
       const storageData = localStorage.getItem('authToken')
-      /*       console.log(storageData) */
+      /*    console.log(storageData) */
       if (storageData) {
         const data = await api.validateToken(storageData)
-        if (data.data) {
-          setUser(data.data)
+        if (data) {
+          setUser(data)
         }
       }
     }
     validateToken()
-  }, [api])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const singin = async (email: string, password: string) => {
     const data = await api.singin(email, password)

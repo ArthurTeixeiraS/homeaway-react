@@ -21,6 +21,10 @@ export const Container = styled.div`
     border: 1px solid ${(props) => props.theme['yellow-secondary']};
     border-radius: 1.5rem;
     padding: 2.5rem;
+    p {
+      text-align: center;
+      font-size: 1.3rem;
+    }
     h1 {
       text-align: center;
       border-bottom: 1px solid ${(props) => props.theme['border-gray']};
@@ -69,7 +73,7 @@ export const Container = styled.div`
         }
       }
       .streetNumber,
-      .cityUF {
+      .cityuf {
         display: grid;
         grid-template-columns: 300px 100px;
         grid-row: auto auto;

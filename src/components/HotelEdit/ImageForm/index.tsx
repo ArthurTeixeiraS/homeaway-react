@@ -8,7 +8,7 @@ interface FormData {
   fileImage: File | null
 }
 
-export function ImageSendForm() {
+export function ImageEditForm() {
   const [imageData, setImageData] = useState<FormData>({
     fileImage: null,
   })
@@ -19,7 +19,7 @@ export function ImageSendForm() {
   }
 
   const handleSubmit = async (event: FormEvent) => {
-    const hotelId = window.location.href.split('/')[5]
+    const hotelId = window.location.href.split('/')[6]
     event.preventDefault()
     const formDataToSend = new FormData()
 
@@ -41,7 +41,7 @@ export function ImageSendForm() {
       )
       console.log(response)
 
-      if (response.status === 200) {
+      if (response.status === 204) {
         console.log('Imagem enviada com sucesso!')
         window.location.href = `/users/myHotels`
       } else {

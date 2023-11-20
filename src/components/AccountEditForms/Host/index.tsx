@@ -3,17 +3,10 @@ import userIcon from '../../../assets/UserIconHost.png'
 import verifiedIcon from '../../../assets/akar-icons_check.png'
 import cancelIcon from '../../../assets/cancel-icon.png'
 import { Link, useNavigate } from 'react-router-dom'
-import { ChangeEvent, FormEvent, useContext, useState } from 'react'
+import { FormEvent, useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../../../contexts/Auth/AuthContext'
 import axios from 'axios'
 import { BaseURL } from '../../../main'
-
-interface FormData {
-  name: string
-  email: string
-  document: string
-  birthDate: string
-}
 
 export function AccountEditHost() {
   const auth = useContext(AuthContext)
@@ -21,25 +14,32 @@ export function AccountEditHost() {
 
   const registerDate = auth.user?.registrationDate
 
-  const [formData, setFormData] = useState<FormData>({
-    name: auth.user?.name as string,
-    email: auth.user?.email as string,
-    document: auth.user?.document as string,
-    birthDate: auth.user?.birthDate as string,
-  })
+  useEffect(() => {
+    const getFormData = async () => {
+      const data = await axios.get(`${BaseURL}/users/me`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('authToken')}`,
+          'ngrok-skip-browser-warning': 'true',
+        },
+      })
+      setFormData(data.data)
+    }
+    getFormData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
-  const handleInputChange = (
-    event: ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >,
-  ) => {
-    const { name, value } = event.target
-    setFormData((prevData) => ({ ...prevData, [name]: value }))
-  }
+  const [formData, setFormData] = useState({
+    name: auth.user?.name,
+    email: auth.user?.email || '',
+    document: auth.user?.document || '',
+    birthDate: auth.user?.birthDate || '',
+  })
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault()
-    const formDataToSend = formData
+    const formDataToSend = {
+      ...formData,
+    }
 
     try {
       const response = await axios.put(
@@ -48,11 +48,12 @@ export function AccountEditHost() {
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('authToken')}`,
+            'ngrok-skip-browser-warning': 'true',
           },
         },
       )
 
-      if (response.status === 200) {
+      if (response.status === 204) {
         console.log('Registro alterado com sucesso: ', response.data)
         navigate('/users/me')
       }
@@ -87,31 +88,51 @@ export function AccountEditHost() {
               type="text"
               placeholder="Seu Nome"
               required
-              value={auth.user?.name}
-              onChange={handleInputChange}
+              value={formData.name}
+              onChange={(e) =>
+                setFormData((prevData) => ({
+                  ...prevData,
+                  name: e.target.value,
+                }))
+              }
             />
             <input
               type="email"
               placeholder="Seu Email"
               required
-              value={auth.user?.email}
-              onChange={handleInputChange}
+              value={formData.email}
+              onChange={(e) =>
+                setFormData((prevData) => ({
+                  ...prevData,
+                  email: e.target.value,
+                }))
+              }
             />
             <input
               type="text"
               className="cpf"
-              value={auth.user?.document}
               placeholder="Seu Documento"
               required
-              onChange={handleInputChange}
+              value={formData.document}
+              onChange={(e) =>
+                setFormData((prevData) => ({
+                  ...prevData,
+                  document: e.target.value,
+                }))
+              }
             />
-
             <input
               type="date"
+              name="birthDate"
               id="bday"
-              placeholder="Data de Nascimento"
-              onChange={handleInputChange}
-              value={auth.user?.birthDate}
+              required
+              onChange={(e) =>
+                setFormData((prevData) => ({
+                  ...prevData,
+                  birthDate: e.target.value as unknown as Date,
+                }))
+              }
+              value={formData.birthDate.toLocaleString()}
             />
 
             <label htmlFor="bday">*Data de Aniversário</label>

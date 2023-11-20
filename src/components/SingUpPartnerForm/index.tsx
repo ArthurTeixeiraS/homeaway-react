@@ -36,14 +36,10 @@ export function SingUpFormPartner() {
     }
     console.log(formData)
     axios
-      .post(`${BaseURL}/register`, formData, {
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Content-Type': 'application/json',
-        },
-      })
+      .post(`${BaseURL}/register`, formData)
       .then((response) => {
         console.log('Resposta da requisição POST:', response.data)
+        alert('Cadastro efetuado com sucesso!')
         window.location.href = '/login'
       })
       .catch((error) => {

@@ -4,7 +4,7 @@ export type User = {
   email: string
   password: string
   repeatPassword?: boolean
-  birthDate?: string
+  birthDate?: Date
   role: string
   document?: string
   registrationDate: string
