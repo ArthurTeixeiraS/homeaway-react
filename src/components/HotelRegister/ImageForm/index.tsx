@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { BackGroundImage, Container } from './styles'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { BaseURL } from '../../../main'
 
@@ -12,6 +12,8 @@ export function ImageSendForm() {
   const [imageData, setImageData] = useState<FormData>({
     fileImage: null,
   })
+
+  const navigate = useNavigate()
 
   const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files && event.target.files[0]
@@ -41,9 +43,9 @@ export function ImageSendForm() {
       )
       console.log(response)
 
-      if (response.status === 200) {
+      if (response.status === 204) {
         console.log('Imagem enviada com sucesso!')
-        window.location.href = `/users/myHotels`
+        navigate(`/users/myHotels`)
       } else {
         console.error('Erro ao enviar o resgistro. Tente novamente')
       }

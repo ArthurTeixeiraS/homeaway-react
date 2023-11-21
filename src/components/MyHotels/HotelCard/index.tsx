@@ -26,8 +26,8 @@ export function HotelCardComponent({ hotel }: HotelCardProps) {
   return (
     <HotelCard>
       <Link to={`/users/myHotels/${hotel.id}`}>
-        {hotel.referenceImage && <img src={hotel.referenceImage} alt="" />}
-        {!hotel.referenceImage && <img src={hotelBackGround} alt="" />}
+        {/* {hotel.referenceImage && <img src={hotel.referenceImage} alt="" />} */}
+        {hotel.referenceImage && <img src={hotelBackGround} alt="" />}
       </Link>
       <div className="infoContainer">
         <h3>{hotel.name}</h3>

@@ -5,37 +5,42 @@ import axios from 'axios'
 import { BaseURL } from '../../../../main'
 
 interface FormData {
-  image: File | null
+  fileImage: File | null
 }
 
 export function RoomImageSendForm() {
   const [imageData, setImageData] = useState<FormData>({
-    image: null,
+    fileImage: null,
   })
 
   const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files && event.target.files[0]
-    setImageData((prevData) => ({ ...prevData, image: file }))
+    setImageData((prevData) => ({ ...prevData, fileImage: file }))
   }
 
   const handleSubmit = async (event: FormEvent) => {
-    const roomId = window.location.href.split('/')[5]
-    console.log(roomId)
+    const roomId = window.location.href.split('/')[7]
     event.preventDefault()
+
     const formDataToSend = new FormData()
-    if (imageData.image) {
-      formDataToSend.append('image', imageData.image)
+    if (imageData.fileImage) {
+      formDataToSend.append('fileImage', imageData.fileImage)
     }
     try {
-      console.log('Dados enviados: ' + formDataToSend)
       const response = await axios.post(
         `${BaseURL}/rooms/${roomId}/image`,
         formDataToSend,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('authToken')}`,
+            'ngrok-skip-browser-warning': 'true',
+          },
+        },
       )
 
       if (response.status === 200) {
         console.log('Imagem enviada com sucesso!')
-        const idHotel = response.data.idHotel
+        const idHotel = response.data.hotelId
         window.location.href = `/users/myHotels/${idHotel}`
       } else {
         console.error('Erro ao enviar o resgistro. Tente novamente')
@@ -63,11 +68,11 @@ export function RoomImageSendForm() {
                 required
               />
             </div>
-            {imageData.image && (
+            {imageData.fileImage && (
               <>
                 <h2>Pré-visualização:</h2>
                 <img
-                  src={URL.createObjectURL(imageData.image)}
+                  src={URL.createObjectURL(imageData.fileImage)}
                   alt="Preview"
                   style={{ maxWidth: '200px', maxHeight: '200px' }}
                 />

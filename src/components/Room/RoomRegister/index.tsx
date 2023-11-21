@@ -2,13 +2,15 @@ import { ChangeEvent, FormEvent, useState } from 'react'
 import { BackGroundImage, Container } from './styles'
 import CurrencyInput from './PriceComponent'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
+import { BaseURL } from '../../../main'
 
 interface FormData {
   name: string
   description: string
   dailyPrice: number
   maxPeople: number
-  idHotel: string
+  hotelId: string
 }
 
 export function RoomRegisterForm() {
@@ -17,7 +19,7 @@ export function RoomRegisterForm() {
     description: '',
     dailyPrice: 0,
     maxPeople: 1,
-    idHotel: window.location.href.split('/')[7],
+    hotelId: window.location.href.split('/')[7],
   })
 
   const handleInputChange = (
@@ -31,10 +33,22 @@ export function RoomRegisterForm() {
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault()
-    const formDataToSend = new FormData()
 
-    formDataToSend.append('name', formData.name)
-    formDataToSend.append('description', formData.description)
+    try {
+      const response = await axios.post(`${BaseURL}/rooms`, formData, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('authToken')}`,
+          'ngrok-skip-browser-warning': 'true',
+          'Content-Type': 'application/json',
+        },
+      })
+      if (response.status === 200) {
+        console.log(response.data)
+        window.location.href = `/users/myHotels/room/addRoom/${response.data.id}/image`
+      }
+    } catch (error) {
+      console.error('Erro na requisição:', error)
+    }
   }
 
   const [currencyValue, setCurrencyValue] = useState<number>(0)

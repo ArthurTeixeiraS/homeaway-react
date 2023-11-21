@@ -57,24 +57,7 @@ export function HotelForm() {
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault()
-    const formDataToSend = new FormData()
-
-    formDataToSend.append('name', formData.name)
-    formDataToSend.append('description', formData.description)
-    formDataToSend.append('street', formData.street)
-    formDataToSend.append('number', formData.number)
-    formDataToSend.append('neighbourhood', formData.neighbourhood)
-    formDataToSend.append('city', formData.city)
-    formDataToSend.append('uf', formData.uf)
-    formDataToSend.append('allowsPets', String(formData.allowsPets))
-    formDataToSend.append('hasWifi', String(formData.hasWifi))
-    formDataToSend.append('hasRoomService', String(formData.hasRoomService))
-
-    /* if (formData.image) {
-      formDataToSend.append('image', formData.image)
-    } */
     try {
-      console.log('Dados enviados:', formData)
       const response = await axios.post(`${BaseURL}/hotels`, formData, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('authToken')}`,

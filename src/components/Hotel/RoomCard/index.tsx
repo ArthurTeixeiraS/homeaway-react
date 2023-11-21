@@ -1,4 +1,5 @@
 import { Card } from './styles'
+import backgroundHotel from '../../../assets/backgrounds/hotel-background.png'
 
 interface RoomCardProps {
   id?: string
@@ -7,33 +8,31 @@ interface RoomCardProps {
   dailyPrice: number
   classification: string
   maxPeople: number
-  roomImage: string
+  roomImage: File | null
   hotelId: string
 }
 
 export function RoomCard(props: RoomCardProps) {
-  const {
-    name,
-    description,
-    dailyPrice,
-    classification,
-    maxPeople,
-    roomImage,
-    hotelId,
-  } = props
-
   return (
     <Card>
       <div className="img">
-        <img src={roomImage} alt={name} />
+        {!props.roomImage && <img src={backgroundHotel} alt="" />}
+        {props.roomImage && <img src={String(props.roomImage)} alt="" />}
       </div>
       <div className="infos">
-        <h2>{name}</h2>
-        <p>{description}</p>
-        <p>Daily Price: {dailyPrice}</p>
-        <p>Classification: {classification}</p>
-        <p>Max People: {maxPeople}</p>
-        <p>Hotel ID: {hotelId}</p>
+        <h1>{props.name}</h1>
+        <h3 className="description">{props.description}</h3>
+        <div className="secondaryInfos">
+          <p className="dailyPrice">
+            <strong>Daily Price:</strong> R${props.dailyPrice}
+          </p>
+          <p className="classification">
+            <strong>Classification:</strong> {props.classification}
+          </p>
+          <p className="maxPeople">
+            <strong>Max People:</strong> {props.maxPeople}
+          </p>
+        </div>
       </div>
     </Card>
   )

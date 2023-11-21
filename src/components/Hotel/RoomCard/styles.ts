@@ -16,5 +16,18 @@ export const Card = styled.div`
   .infos {
     margin-top: 1rem;
     margin-left: 1rem;
+    h3 {
+      margin-bottom: 1rem;
+    }
+    .secondaryInfos {
+      display: grid;
+      grid-template-columns: 200px 200px;
+      grid-row: auto auto;
+      grid-column-gap: 20px;
+      grid-row-gap: 20px;
+      p {
+        font-size: 1.2rem;
+      }
+    }
   }
 `

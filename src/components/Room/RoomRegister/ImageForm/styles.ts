@@ -19,13 +19,14 @@ export const Container = styled.div`
     background-color: white;
     border: 1px solid ${(props) => props.theme['yellow-secondary']};
     border-radius: 1.5rem;
-    padding: 2.5rem;
+    padding: 3rem;
+    height: 102%;
     .image {
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      padding: 2.5rem;
+      padding: 2rem;
       input[type='file'] {
         display: none;
       }

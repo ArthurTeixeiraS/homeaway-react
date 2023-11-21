@@ -9,6 +9,7 @@ export function MyHotels() {
   const auth = useContext(AuthContext)
   const api = UseAPI()
   const [hotels, setHotels] = useState<Hotel[]>([])
+  const [dataLoaded, setDataLoaded] = useState(false)
 
   useEffect(() => {
     const hotelsGet = async () => {
@@ -17,8 +18,10 @@ export function MyHotels() {
           localStorage.getItem('authToken')!,
         )
         setHotels(response)
+        setDataLoaded(true)
       } catch (error) {
         console.error('Erro ao obter hotéis:', error)
+        setDataLoaded(false)
       }
     }
     hotelsGet()
@@ -27,18 +30,22 @@ export function MyHotels() {
 
   return (
     <MyHotelsContainer>
-      <div className="container">
-        <div className="titleContainer">
-          <h1>
-            Seus Hotéis <span>({auth.user?.name})</span>
-          </h1>
+      {dataLoaded ? (
+        <div className="container">
+          <div className="titleContainer">
+            <h1>
+              Seus Hotéis <span>({auth.user?.name})</span>
+            </h1>
+          </div>
+          <div className="hotelsContainer">
+            {hotels.map((hotel) => (
+              <HotelCardComponent key={hotel.id} hotel={hotel} />
+            ))}
+          </div>
         </div>
-        <div className="hotelsContainer">
-          {hotels.map((hotel) => (
-            <HotelCardComponent key={hotel.id} hotel={hotel} />
-          ))}
-        </div>
-      </div>
+      ) : (
+        <h1>Carregando dados...</h1>
+      )}
     </MyHotelsContainer>
   )
 }
