@@ -117,7 +117,8 @@ export const InitialOptions = styled.div`
       li {
         list-style: none;
         margin: 1.5rem;
-        a {
+        a,
+        button {
           text-decoration: none;
           color: ${(props) => props.theme['blue-primary']};
           display: block;
@@ -126,8 +127,11 @@ export const InitialOptions = styled.div`
           margin-top: 0.8rem;
           font-size: 1.3rem;
           font-weight: bold;
+          border: 0;
+          background-color: transparent;
           &:hover {
             transform: scale(1.02);
+            cursor: pointer;
           }
         }
       }

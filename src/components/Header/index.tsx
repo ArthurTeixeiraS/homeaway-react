@@ -58,18 +58,31 @@ export function Header() {
           </div>
           <div className="dropdown disabled">
             <ul className="dropdown-content">
-              <li>
-                <Link to="/login">Entrar</Link>
-              </li>
-              <li>
-                <Link to="/singup">Cadastrar-se</Link>
-              </li>
+              {!auth.user && (
+                <>
+                  <li>
+                    <Link to="/login">Entrar</Link>
+                  </li>
+                  <li>
+                    <Link to="/singup">Cadastrar-se</Link>
+                  </li>
+                </>
+              )}
               {auth.user && (
-                <li>
-                  <Link to="javascript:;" onClick={handleLogout}>
-                    Sair
-                  </Link>
-                </li>
+                <>
+                  <li>
+                    <Link to="users/myHotels">Meus hotéis</Link>
+                  </li>
+                  <li>
+                    <Link to="users/reservations">Reservas</Link>
+                  </li>
+                  <li>
+                    <Link to="users/me">Perfil</Link>
+                  </li>
+                  <li>
+                    <button onClick={handleLogout}>Sair</button>
+                  </li>
+                </>
               )}
             </ul>
           </div>

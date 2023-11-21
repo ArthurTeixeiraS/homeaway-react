@@ -9,7 +9,9 @@ import logoHomeAway from '../../../assets/logoHomeAway.png'
 import hamburguerMenu from '../../../assets/gg_menu.svg'
 import userCircle from '../../../assets/bx_bxs-user-circle.svg'
 import { FaSearch } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useContext } from 'react'
+import { AuthContext } from '../../../contexts/Auth/AuthContext'
 
 function verificaData() {
   const hoje = new Date().toISOString().slice(0, 10)
@@ -26,6 +28,14 @@ function abreFechaDropdown() {
 }
 
 export function MainMenuHeader() {
+  const auth = useContext(AuthContext)
+  const navigate = useNavigate()
+
+  const handleLogout = async () => {
+    await auth.singout()
+    navigate('/')
+  }
+
   return (
     <>
       <HeaderContainer>
@@ -58,12 +68,32 @@ export function MainMenuHeader() {
             </div>
             <div className="dropdown disabled">
               <ul className="dropdown-content">
-                <li>
-                  <Link to="/login">Entrar</Link>
-                </li>
-                <li>
-                  <Link to="/singup">Cadastrar-se</Link>
-                </li>
+                {!auth.user && (
+                  <>
+                    <li>
+                      <Link to="/login">Entrar</Link>
+                    </li>
+                    <li>
+                      <Link to="/singup">Cadastrar-se</Link>
+                    </li>
+                  </>
+                )}
+                {auth.user && (
+                  <>
+                    <li>
+                      <Link to="users/myHotels">Meus hotéis</Link>
+                    </li>
+                    <li>
+                      <Link to="users/reservations">Reservas</Link>
+                    </li>
+                    <li>
+                      <Link to="users/me">Perfil</Link>
+                    </li>
+                    <li>
+                      <button onClick={handleLogout}>Sair</button>
+                    </li>
+                  </>
+                )}
               </ul>
             </div>
           </InitialOptions>
