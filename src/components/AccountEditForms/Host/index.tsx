@@ -58,7 +58,7 @@ export function AccountEditHost() {
         },
       )
 
-      if (response.status === 204) {
+      if (response.status === 200) {
         console.log('Registro alterado com sucesso: ', response.data)
         window.location.reload()
       }

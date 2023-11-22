@@ -58,6 +58,7 @@ export function HotelsComponent() {
               roomData.map((room) => (
                 <RoomCard
                   key={room.id}
+                  id={room.id}
                   name={room.name}
                   description={room.description}
                   dailyPrice={room.dailyPrice}

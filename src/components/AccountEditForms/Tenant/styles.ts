@@ -85,7 +85,8 @@ export const FormContainer = styled.div`
           border: 1px solid ${(props) => props.theme['blue-primary']};
           padding: 1rem;
           font-size: 1.5rem;
-          color: ${(props) => props.theme.black};
+          /*          color: ${(props) => props.theme.black}; */
+          font-weight: bold;
         }
         #cpf {
           &:hover {

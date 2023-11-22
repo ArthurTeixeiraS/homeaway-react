@@ -56,7 +56,6 @@ export function HotelEditComponent() {
         })
 
         setDataLoaded(true)
-        console.log(response)
       } catch (error) {
         console.error('Erro ao obter dados do hotel:', error)
       }
@@ -286,7 +285,7 @@ export function HotelEditComponent() {
               </div>
             </div>
             <div className="submit">
-              <Link to="/users/me">
+              <Link to="/users/myHotels">
                 <button type="button">Cancelar</button>
               </Link>
               <button type="submit">Enviar</button>

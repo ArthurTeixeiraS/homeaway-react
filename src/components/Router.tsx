@@ -17,6 +17,8 @@ import { RoomImageSendForm } from './Room/RoomRegister/ImageForm'
 import { RequireAuth } from '../contexts/Auth/RequireAuth'
 import { FindPlaces } from './FindPlaces'
 import { ImageEditForm } from './HotelEdit/ImageForm'
+import { RoomEditPage } from '../pages/Room/RoomEdit'
+import { RoomImageEditForm } from './Room/RoomEdit/ImageForm'
 
 export function Router() {
   return (
@@ -113,6 +115,22 @@ export function Router() {
             element={
               <RequireAuth>
                 <RoomImageSendForm />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/users/myHotels/room/edit/:id"
+            element={
+              <RequireAuth>
+                <RoomEditPage />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/users/myHotels/room/edit/:id/image"
+            element={
+              <RequireAuth>
+                <RoomImageEditForm />
               </RequireAuth>
             }
           />

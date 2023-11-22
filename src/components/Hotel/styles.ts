@@ -21,6 +21,10 @@ export const TitleContainer = styled.div`
       font-size: 1.3rem;
       border-radius: 1.5rem;
       border: 0;
+      transition: all 0.2s ease-in-out;
+      &:hover {
+        filter: brightness(90%);
+      }
     }
   }
   h1 {

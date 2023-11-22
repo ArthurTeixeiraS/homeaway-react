@@ -38,9 +38,13 @@ export function MyHotels() {
             </h1>
           </div>
           <div className="hotelsContainer">
-            {hotels.map((hotel) => (
-              <HotelCardComponent key={hotel.id} hotel={hotel} />
-            ))}
+            {hotels.length > 0 ? (
+              hotels.map((hotel) => (
+                <HotelCardComponent key={hotel.id} hotel={hotel} />
+              ))
+            ) : (
+              <h2>Não há hoteis registrados!</h2>
+            )}
           </div>
         </div>
       ) : (
