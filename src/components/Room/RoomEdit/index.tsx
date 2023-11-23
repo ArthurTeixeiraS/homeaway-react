@@ -39,7 +39,6 @@ export function RoomEditForm() {
           },
         })
         const roomData = response.data
-        console.log(roomData)
         setFormData(roomData)
         setDataLoaded(true)
       } catch (error) {
@@ -64,15 +63,21 @@ export function RoomEditForm() {
     event.preventDefault()
 
     try {
-      const response = await axios.put(`${BaseURL}/rooms/${idRoom}`, formData, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('authToken')}`,
-          'ngrok-skip-browser-warning': 'true',
-          'Content-Type': 'application/json',
+      const response = await axios.put(
+        `${BaseURL}/rooms/${idRoom}`,
+        {
+          ...formData,
+          dailyPrice: parseFloat(currencyValue.toFixed(2)),
         },
-      })
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('authToken')}`,
+            'ngrok-skip-browser-warning': 'true',
+            'Content-Type': 'application/json',
+          },
+        },
+      )
       if (response.status === 200) {
-        console.log(response.data)
         navigate(`/users/myHotels/room/edit/${response.data.id}/image`)
       }
     } catch (error) {
@@ -84,7 +89,7 @@ export function RoomEditForm() {
 
   const handleCurrencyChange = (value: number) => {
     setCurrencyValue(value)
-    formData.dailyPrice = currencyValue
+    formData.dailyPrice = parseFloat(currencyValue.toFixed(2))
   }
 
   return (

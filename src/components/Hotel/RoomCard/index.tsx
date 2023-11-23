@@ -1,6 +1,9 @@
 import { Card } from './styles'
 import backgroundHotel from '../../../assets/backgrounds/hotel-background.png'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
+import { FormEvent } from 'react'
+import { BaseURL } from '../../../main'
 
 interface RoomCardProps {
   id?: string
@@ -9,17 +12,37 @@ interface RoomCardProps {
   dailyPrice: number
   classification: string
   maxPeople: number
-  roomImage: File | null
+  referenceImage: string
   hotelId: string
 }
 
 export function RoomCard(props: RoomCardProps) {
+  const idRoom = props.id
+  const handleRemove = async (event: FormEvent) => {
+    event.preventDefault()
+    try {
+      const response = await axios.delete(`${BaseURL}/rooms/${idRoom}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('authToken')}`,
+          'ngrok-skip-browser-warning': 'true',
+        },
+      })
+
+      if (response.status === 204) {
+        window.location.reload()
+        return response
+      }
+    } catch (e) {
+      console.error('Falha na requisição:', e)
+    }
+  }
+
   return (
     <Card>
       <div className="information">
         <div className="img">
-          {!props.roomImage && <img src={backgroundHotel} alt="" />}
-          {props.roomImage && <img src={String(props.roomImage)} alt="" />}
+          {!props.referenceImage && <img src={backgroundHotel} alt="" />}
+          {props.referenceImage && <img src={props.referenceImage} alt="" />}
         </div>
         <div className="infos">
           <h1>{props.name}</h1>
@@ -44,7 +67,9 @@ export function RoomCard(props: RoomCardProps) {
         <Link to={`/users/myHotels/room/edit/${props.id}`}>
           <button>Editar</button>
         </Link>
-        <button className="remove">Remover</button>
+        <button className="remove" onClick={(e) => handleRemove(e)}>
+          Remover
+        </button>
       </div>
     </Card>
   )

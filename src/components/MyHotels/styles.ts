@@ -5,12 +5,25 @@ export const MyHotelsContainer = styled.div`
   .titleContainer {
     display: flex;
     justify-content: flex-start;
+    .arrow {
+      margin-right: 1.5rem;
+      display: flex;
+      a {
+        text-decoration: none;
+        color: black;
+      }
+    }
     h1 {
       font-size: 4rem;
       padding: 0 0 2rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       span {
         font-size: 2rem;
         font-weight: normal;
+        margin-left: 1rem;
+        margin-top: 1rem;
       }
     }
   }

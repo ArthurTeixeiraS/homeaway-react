@@ -36,8 +36,8 @@ export function Header() {
         </div>
 
         <div className="middleOptions">
-          <nav>
-            <ul>
+          {auth.user?.role !== 'HOST' && (
+            <ul className="nav-links">
               <li>
                 <Link to="/findPlaces">Encontrar Imóvel</Link>
               </li>
@@ -45,33 +45,47 @@ export function Header() {
                 <Link to="/rentalGuides">Guia para aluguéis</Link>
               </li>
             </ul>
-          </nav>
+          )}
         </div>
 
         <InitialOptions>
-          <BecomeHostButton>
-            <Link to="/singupPartner">Torne-se Parceiro</Link>
-          </BecomeHostButton>
+          {auth.user?.role === 'HOST' ? (
+            <BecomeHostButton>
+              <Link className="tenant" to="/rentalGuides">
+                Dicas para anúnciar
+              </Link>
+            </BecomeHostButton>
+          ) : (
+            <BecomeHostButton>
+              <Link to="/singupPartner">Torne-se Parceiro</Link>
+            </BecomeHostButton>
+          )}
           <div className="initialCard" onClick={abreFechaDropdown}>
             <img src={hamburguerMenu} alt="" />
             <img src={userCircle} width="40px" alt="" />
           </div>
           <div className="dropdown disabled">
             <ul className="dropdown-content">
-              {!auth.user && (
+              {auth.user?.role === 'HOST' && (
                 <>
-                  <li>
-                    <Link to="/login">Entrar</Link>
+                  <li className="host">
+                    <Link to="users/myHotels">Meus hotéis</Link>
                   </li>
-                  <li>
-                    <Link to="/singup">Cadastrar-se</Link>
+                  <li className="host">
+                    <Link to="users/host/reservations">Reservas Pendentes</Link>
+                  </li>
+                  <li className="host">
+                    <Link to="users/me">Perfil</Link>
+                  </li>
+                  <li className="host">
+                    <button onClick={handleLogout}>Sair</button>
                   </li>
                 </>
               )}
-              {auth.user && (
+              {auth.user?.role === 'TENANT' && (
                 <>
                   <li>
-                    <Link to="users/myHotels">Meus hotéis</Link>
+                    <Link to="users/myHotels">Minhas resesrvas</Link>
                   </li>
                   <li>
                     <Link to="users/reservations">Reservas</Link>
@@ -81,6 +95,16 @@ export function Header() {
                   </li>
                   <li>
                     <button onClick={handleLogout}>Sair</button>
+                  </li>
+                </>
+              )}
+              {!auth.user?.role && (
+                <>
+                  <li>
+                    <Link to="/login">Entrar</Link>
+                  </li>
+                  <li>
+                    <Link to="/singUp">Cadastrar</Link>
                   </li>
                 </>
               )}

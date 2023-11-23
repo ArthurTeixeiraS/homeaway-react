@@ -1,12 +1,20 @@
 import { FormContainer } from './styles'
 import userIcon from '../../../assets/userIcon.png'
 /* import verifiedIcon from '../../../assets/akar-icons_check.png' */
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useContext } from 'react'
 import { AuthContext } from '../../../contexts/Auth/AuthContext'
+import userEditIcon from '../../../assets/6324826.png'
 
 export function AccountFormTenant() {
   const auth = useContext(AuthContext)
+  const navigate = useNavigate()
+
+  const handleLogout = async () => {
+    await auth.singout()
+    navigate('/')
+  }
+
   return (
     <FormContainer>
       <div className="infoDiv">
@@ -26,16 +34,21 @@ export function AccountFormTenant() {
         </div>
         <div className="content">
           <div className="userInfos">
-            <h2>Olá, {auth.user?.name}</h2>
+            <h2>
+              Olá, {auth.user?.name}
+              <Link to={'/users/edit'}>
+                <img src={userEditIcon} width={30} alt="" />
+              </Link>
+            </h2>
             <p>Cadastrado em: {auth.user?.registrationDate.split('T')[0]}</p>
           </div>
           <div className="divButton">
-            <Link to="/users/edit">
-              <button>Editar Perfil</button>
+            <Link to="/client/reservations">
+              <button>Suas Reservas</button>
             </Link>
           </div>
-          <div className="link">
-            <Link to="/client/reservations">Suas Reservas</Link>
+          <div className="exitBtn">
+            <button onClick={handleLogout}>Sair</button>
           </div>
         </div>
       </div>

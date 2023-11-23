@@ -49,19 +49,27 @@ export function MainMenuHeader() {
             </Link>
           </div>
 
-          <ul className="nav-links">
-            <li>
-              <Link to="/findPlaces">Encontrar Imóvel</Link>
-            </li>
-            <li>
-              <Link to="/rentalGuides">Guia para aluguéis</Link>
-            </li>
-          </ul>
+          {auth.user?.role !== 'HOST' && (
+            <ul className="nav-links">
+              <li>
+                <Link to="/findPlaces">Encontrar Imóvel</Link>
+              </li>
+              <li>
+                <Link to="/rentalGuides">Guia para aluguéis</Link>
+              </li>
+            </ul>
+          )}
 
           <InitialOptions>
-            <BecomeHostButton>
-              <Link to="/singupPartner">Torne-se Parceiro</Link>
-            </BecomeHostButton>
+            {auth.user?.role === 'HOST' ? (
+              <BecomeHostButton>
+                <Link to="/rentalGuides">Dicas para anúnciar</Link>
+              </BecomeHostButton>
+            ) : (
+              <BecomeHostButton>
+                <Link to="/singupPartner">Torne-se Parceiro</Link>
+              </BecomeHostButton>
+            )}
             <div className="initialCard" onClick={abreFechaDropdown}>
               <img src={hamburguerMenu} alt="" />
               <img src={userCircle} width="40px" alt="" />
@@ -78,13 +86,31 @@ export function MainMenuHeader() {
                     </li>
                   </>
                 )}
-                {auth.user && (
+                {auth.user && auth.user.role === 'HOST' && (
                   <>
-                    <li>
+                    <li className="host">
                       <Link to="users/myHotels">Meus hotéis</Link>
                     </li>
+                    <li className="host">
+                      <Link to="users/host/reservations">
+                        Reservas Pendentes
+                      </Link>
+                    </li>
+                    <li className="host">
+                      <Link to="users/me">Perfil</Link>
+                    </li>
+                    <li className="host">
+                      <button onClick={handleLogout}>Sair</button>
+                    </li>
+                  </>
+                )}
+                {auth.user && auth.user.role === 'TENANT' && (
+                  <>
                     <li>
-                      <Link to="users/reservations">Reservas</Link>
+                      <Link to="users/myReservations">Quartos Reservados</Link>
+                    </li>
+                    <li>
+                      <Link to="users/history">Histórico de compras</Link>
                     </li>
                     <li>
                       <Link to="users/me">Perfil</Link>
@@ -101,55 +127,73 @@ export function MainMenuHeader() {
 
         <SearchContainer>
           <div className="headers">
-            <div className="title">
-              <h1>Buscar</h1>
-            </div>
+            {auth.user?.role === 'TENANT' || !auth.user ? (
+              <div className="title">
+                <h1>Buscar</h1>
+              </div>
+            ) : (
+              <div className="titleHost">
+                <h1>
+                  <span>Começe a </span>hospedar!
+                </h1>
+              </div>
+            )}
           </div>
           <div className="search-box">
-            <form action="" method="get">
-              <div className="location-input">
-                <label htmlFor="location">Indo para:</label>
-                <input
-                  type="text"
-                  name="location"
-                  id="location"
-                  placeholder="Que cidade você prefere?"
-                />
-              </div>
-              <div className="checkin-input">
-                <label htmlFor="checkin">Check-In</label>
-                <input
-                  type="date"
-                  name="checkin"
-                  id="checkin"
-                  min={verificaData()}
-                />
-              </div>
-              <div className="checkout-input">
-                <label htmlFor="checkout">Check-Out</label>
-                <input
-                  type="date"
-                  name="checkout"
-                  id="checkout"
-                  min={verificaData()}
-                />
-              </div>
-              <div className="location-input">
-                <label htmlFor="location">Indo para:</label>
-                <input
-                  type="number"
-                  name="maxPeople"
-                  id="maxPeople"
-                  placeholder="Quartos"
-                />
-              </div>
+            {auth.user?.role === 'TENANT' || !auth.user ? (
+              <form action="" method="get">
+                <div className="location-input">
+                  <label htmlFor="location">Indo para:</label>
+                  <input
+                    type="text"
+                    name="location"
+                    id="location"
+                    placeholder="Que cidade você prefere?"
+                  />
+                </div>
+                <div className="checkin-input">
+                  <label htmlFor="checkin">Check-In</label>
+                  <input
+                    type="date"
+                    name="checkin"
+                    id="checkin"
+                    min={verificaData()}
+                  />
+                </div>
+                <div className="checkout-input">
+                  <label htmlFor="checkout">Check-Out</label>
+                  <input
+                    type="date"
+                    name="checkout"
+                    id="checkout"
+                    min={verificaData()}
+                  />
+                </div>
+                <div className="location-input">
+                  <label htmlFor="location">Indo para:</label>
+                  <input
+                    type="number"
+                    name="maxPeople"
+                    id="maxPeople"
+                    placeholder="Quartos"
+                  />
+                </div>
 
-              <Link to="/">
-                <button type="button">
-                  <FaSearch color="white" size={15} />
-                </button>
-              </Link>
-            </form>
+                <Link to="/">
+                  <button type="button">
+                    <FaSearch color="white" size={15} />
+                  </button>
+                </Link>
+              </form>
+            ) : (
+              <div className="buttonForStart">
+                <Link to={'/users/addHotel'}>
+                  <BecomeHostButton>
+                    Começe adicionando um hotel!
+                  </BecomeHostButton>
+                </Link>
+              </div>
+            )}
           </div>
         </SearchContainer>
       </HeaderContainer>

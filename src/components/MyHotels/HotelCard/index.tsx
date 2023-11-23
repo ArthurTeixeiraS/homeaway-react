@@ -23,13 +23,10 @@ export function HotelCardComponent({ hotel }: HotelCardProps) {
     }
   }
 
-  console.log(hotel.referenceImage)
-  /*   const referenceImage = `` */
-
   return (
     <HotelCard>
       <Link to={`/users/myHotels/${hotel.id}`}>
-        {hotel.referenceImage && <img src={hotelBackGround} alt="" />}
+        {hotel.referenceImage && <img src={hotel.referenceImage} alt="" />}
         {!hotel.referenceImage && <img src={hotelBackGround} alt="" />}
         {/* {referenceImage && <img src={referenceImage} alt="" />} */}
       </Link>

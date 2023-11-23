@@ -1,6 +1,5 @@
 import { FormContainer } from './styles'
 import userIcon from '../../../assets/UserIconHost.png'
-import verifiedIcon from '../../../assets/akar-icons_check.png'
 import cancelIcon from '../../../assets/cancel-icon.png'
 import { Link } from 'react-router-dom'
 import { FormEvent, useContext, useEffect, useState } from 'react'
@@ -77,10 +76,10 @@ export function AccountEditHost() {
               <p>{auth.user?.email}</p>
             </div>
             <div className="verified">
-              <div className="emailVerified">
+              {/* <div className="emailVerified">
                 <img src={verifiedIcon} alt="" />
                 <p>Email Verificado</p>
-              </div>
+              </div> */}
               <p>Hospedeiro/Parceiro</p>
             </div>
           </div>

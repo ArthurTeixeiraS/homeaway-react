@@ -30,5 +30,14 @@ export const TitleContainer = styled.div`
   h1 {
     text-align: start;
     font-size: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .arrow {
+      margin-right: 1rem;
+      a {
+        color: black;
+      }
+    }
   }
 `

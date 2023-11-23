@@ -135,6 +135,27 @@ export const InitialOptions = styled.div`
           }
         }
       }
+      .host {
+        list-style: none;
+        margin: 1.5rem;
+        a,
+        button {
+          text-decoration: none;
+          color: ${(props) => props.theme['yellow-secondary']};
+          display: block;
+          text-decoration: none;
+          position: relative;
+          margin-top: 0.8rem;
+          font-size: 1.3rem;
+          font-weight: bold;
+          border: 0;
+          background-color: transparent;
+          &:hover {
+            transform: scale(1.02);
+            cursor: pointer;
+          }
+        }
+      }
     }
   }
 `

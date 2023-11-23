@@ -135,6 +135,27 @@ export const InitialOptions = styled.div`
           }
         }
       }
+      .host {
+        list-style: none;
+        margin: 1.5rem;
+        a,
+        button {
+          text-decoration: none;
+          color: ${(props) => props.theme['yellow-secondary']};
+          display: block;
+          text-decoration: none;
+          position: relative;
+          margin-top: 0.8rem;
+          font-size: 1.3rem;
+          font-weight: bold;
+          border: 0;
+          background-color: transparent;
+          &:hover {
+            transform: scale(1.02);
+            cursor: pointer;
+          }
+        }
+      }
     }
   }
 `
@@ -169,7 +190,6 @@ export const SearchContainer = styled.div`
     justify-content: center;
     background-color: rgba(255, 255, 255, 1);
     border-radius: 2rem 2rem 0 0;
-    border-bottom: 1px solid ${(props) => props.theme['border-gray']};
     .title {
       h1 {
         font-size: 4vw;
@@ -180,6 +200,28 @@ export const SearchContainer = styled.div`
           text-decoration: none;
           color: ${(props) => props.theme['blue-primary']};
         }
+      }
+    }
+    .titleHost {
+      h1 {
+        font-size: 4vw;
+        font-weight: bold;
+        color: ${(props) => props.theme['yellow-secondary']};
+        text-align: center;
+        padding: 1rem;
+        span {
+          text-decoration: none;
+          color: ${(props) => props.theme['blue-primary']};
+        }
+      }
+    }
+  }
+  .buttonForStart {
+    display: flex;
+    justify-content: center;
+    a {
+      button {
+        width: 30rem;
       }
     }
   }

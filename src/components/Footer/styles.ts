@@ -22,7 +22,7 @@ export const FooterContainer = styled.footer`
       line-height: normal;
     }
     span {
-      color: #fdce63;
+      color: ${(props) => props.theme['yellow-secondary']};
       font-family: Montserrat;
       font-size: 50px;
       font-style: normal;

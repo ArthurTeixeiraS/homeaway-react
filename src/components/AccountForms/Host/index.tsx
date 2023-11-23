@@ -1,13 +1,21 @@
 import { FormContainer } from './styles'
 import userIcon from '../../../assets/UserIconHost.png'
-import verifiedIcon from '../../../assets/akar-icons_check.png'
-import { Link } from 'react-router-dom'
+/* import verifiedIcon from '../../../assets/akar-icons_check.png' */
+import { Link, useNavigate } from 'react-router-dom'
 import { useContext } from 'react'
 import { AuthContext } from '../../../contexts/Auth/AuthContext'
+import userEditIcon from '../../../assets/6324826.png'
 
 export function AccountFormHost() {
   const auth = useContext(AuthContext)
   const registrationDate = auth.user?.registrationDate
+  const navigate = useNavigate()
+
+  const handleLogout = async () => {
+    await auth.singout()
+    navigate('/')
+  }
+
   return (
     <FormContainer>
       <div className="infoDiv">
@@ -18,28 +26,33 @@ export function AccountFormHost() {
             <p>{auth.user?.email}</p>
           </div>
           <div className="verified">
-            <div className="emailVerified">
+            {/*  <div className="emailVerified">
               <img src={verifiedIcon} alt="" />
               <p>Email Verificado</p>
-            </div>
+            </div> */}
             <p>Hospedeiro/Parceiro</p>
           </div>
         </div>
         <div className="content">
           <div className="userInfos">
-            <h2>Olá, {auth.user?.name}</h2>
+            <h2>
+              Olá, {auth.user?.name}
+              <Link to={'/users/edit'}>
+                <img src={userEditIcon} width={30} alt="" />
+              </Link>
+            </h2>
             <p>Cadastrado em: {registrationDate?.split('T')[0]}</p>
           </div>
           <div className="divButton">
-            <Link to="/users/edit">
-              <button>Editar Perfil</button>
+            <Link to="/users/myHotels">
+              <button>Meus hotéis</button>
             </Link>
             <Link to="/users/addHotel">
               <button>Adicionar um hotel</button>
             </Link>
           </div>
-          <div className="link">
-            <Link to="/users/myHotels">Seus Hotéis</Link>
+          <div className="exitBtn">
+            <button onClick={handleLogout}>Sair</button>
           </div>
         </div>
       </div>

@@ -8,6 +8,11 @@ export const HotelCard = styled.div`
   }
   img {
     transition: all 0.2s ease-in-out;
+    width: 28rem;
+    height: 28rem;
+    border-radius: 2rem;
+    background-position: center;
+    background-repeat: cover;
     &:hover {
       transform: scale(1.02);
     }

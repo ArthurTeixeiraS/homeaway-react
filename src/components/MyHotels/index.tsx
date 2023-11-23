@@ -4,6 +4,8 @@ import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../../contexts/Auth/AuthContext'
 import { UseAPI } from '../../hooks/useApi'
 import { Hotel } from '../../@types/Hotel'
+import { FaArrowLeft } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 export function MyHotels() {
   const auth = useContext(AuthContext)
@@ -34,7 +36,13 @@ export function MyHotels() {
         <div className="container">
           <div className="titleContainer">
             <h1>
-              Seus Hotéis <span>({auth.user?.name})</span>
+              <div className="arrow">
+                <Link to="/users/me">
+                  <FaArrowLeft />
+                </Link>
+              </div>
+              Seus Hotéis
+              <span>({auth.user?.name})</span>
             </h1>
           </div>
           <div className="hotelsContainer">

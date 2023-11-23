@@ -4,6 +4,7 @@ import { RoomCard } from './RoomCard' // Importa o componente RoomCard
 import { useEffect, useState } from 'react'
 import { BaseURL } from '../../main'
 import axios from 'axios'
+import { FaArrowLeft } from 'react-icons/fa'
 
 interface RoomData {
   id: string
@@ -12,7 +13,7 @@ interface RoomData {
   dailyPrice: number
   classification: string
   maxPeople: number
-  roomImage: File | null
+  referenceImage: string
   hotelId: string
 }
 
@@ -31,7 +32,6 @@ export function HotelsComponent() {
           },
         })
         const data = await response.data
-        console.log(roomData)
         setRoomData(data)
         setDataLoaded(true)
       } catch (err) {
@@ -48,7 +48,14 @@ export function HotelsComponent() {
       {dataLoaded ? (
         <>
           <TitleContainer>
-            <h1>Aqui estão os dados do seu hotel...</h1>
+            <h1>
+              <div className="arrow">
+                <Link to="/users/myHotels">
+                  <FaArrowLeft />
+                </Link>
+              </div>
+              Aqui estão os dados do seu hotel...
+            </h1>
             <Link to={`/users/myHotels/room/addRoom/${hotelId}`}>
               <button>Adicionar Quarto</button>
             </Link>
@@ -64,7 +71,7 @@ export function HotelsComponent() {
                   dailyPrice={room.dailyPrice}
                   classification={room.classification}
                   maxPeople={room.maxPeople}
-                  roomImage={room.roomImage}
+                  referenceImage={room.referenceImage}
                   hotelId={room.hotelId}
                 />
               ))

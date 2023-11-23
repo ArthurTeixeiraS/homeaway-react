@@ -4,15 +4,17 @@ import filterIcon from '../../../assets/filterIcon.png'
 export function FiltersNav() {
   return (
     <FilterNav>
-      <li>
-        <button>Quartos</button>
-      </li>
-      <li>
-        <button>Casas</button>
-      </li>
-      <li>
-        <button>Hoteis</button>
-      </li>
+      <ul>
+        <li>
+          <a>Quartos</a>
+        </li>
+        <li>
+          <a>Casas</a>
+        </li>
+        <li>
+          <a>Hoteis</a>
+        </li>
+      </ul>
 
       <div className="filterButton">
         <button>

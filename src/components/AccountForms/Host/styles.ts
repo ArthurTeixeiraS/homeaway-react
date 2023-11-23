@@ -55,6 +55,12 @@ export const FormContainer = styled.div`
       .userInfos {
         h2 {
           font-size: 2.5rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          a {
+            margin-left: 1rem;
+          }
         }
         p {
           padding: 1rem 0 0 0.5rem;
@@ -87,13 +93,24 @@ export const FormContainer = styled.div`
           }
         }
       }
-      .link {
-        padding: 1rem 0 0 1.5rem;
-        a {
-          text-decoration: none;
-          color: ${(props) => props.theme.black};
+      .exitBtn {
+        border: 0;
+        button {
+          margin-top: 1rem;
+          margin-left: 1rem;
+          background-color: transparent;
+          color: red;
           font-size: 1.5rem;
-          border-bottom: 1px solid ${(props) => props.theme['border-gray']};
+          border: 1px solid red;
+          width: 158px;
+          border-radius: 6px;
+          height: 54px;
+          transition: all 0.5s ease-in-out;
+          &:hover {
+            cursor: pointer;
+            background: red;
+            color: #fff;
+          }
         }
       }
     }
