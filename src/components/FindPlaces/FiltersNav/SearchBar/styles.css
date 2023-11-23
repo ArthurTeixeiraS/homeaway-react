@@ -1,0 +1,29 @@
+.inputContainer {
+    width: 45%;
+    height: 2.5rem;
+    border: none;
+    border-radius: 10px;
+    padding: 1rem;
+    border: 1px solid #2E2E2E;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    height: 5rem;
+  }
+  
+  input {
+    background-color: transparent;
+    border: none;
+    font-size: 1.25rem;
+    width: 100%;
+    margin-left: 5px;
+    height: 5rem;
+  }
+  
+  input:focus {
+    outline: none;
+  }
+  
+  #search-icon {
+    color: royalblue;
+  }

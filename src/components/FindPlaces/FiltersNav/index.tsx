@@ -1,27 +1,24 @@
 import { FilterNav } from './styles'
 import filterIcon from '../../../assets/filterIcon.png'
+import { SearchBar } from './SearchBar/SearchBar'
+import { FilterModal } from './Filter Modal'
+import { useState } from 'react'
 
 export function FiltersNav() {
-  return (
-    <FilterNav>
-      <ul>
-        <li>
-          <a>Quartos</a>
-        </li>
-        <li>
-          <a>Casas</a>
-        </li>
-        <li>
-          <a>Hoteis</a>
-        </li>
-      </ul>
+  const [open, setOpen] = useState<boolean>(false)
 
-      <div className="filterButton">
-        <button>
-          <img src={filterIcon} width={17} alt="" />
-          Filtrar
-        </button>
-      </div>
-    </FilterNav>
+  return (
+    <>
+      <FilterNav>
+        <SearchBar />
+        <div className="filterButton">
+          <button onClick={() => setOpen(!open)}>
+            <img src={filterIcon} width={17} alt="" />
+            Filtrar
+          </button>
+        </div>
+      </FilterNav>
+      <FilterModal isOpen={open} setOpen={setOpen} />
+    </>
   )
 }
