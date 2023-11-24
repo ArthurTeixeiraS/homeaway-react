@@ -80,6 +80,29 @@ export function FilterModal({ isOpen, setOpen }: Modal) {
                 <input type="date" name="" id="" min={selectedCheckInDate} />
               </div>
             </div>
+            <div className="checkboxes">
+              <div className="checkContainer">
+                <label htmlFor="hasRoomService">
+                  <h2>Serviço de quarto</h2>
+                </label>
+                <input type="checkbox" name="" id="hasRoomService" />
+              </div>
+              <div className="checkContainer">
+                <label htmlFor="allowPets">
+                  <h2>Permite animais de estimação</h2>
+                </label>
+                <input type="checkbox" name="" id="allowPets" />
+              </div>
+              <div className="checkContainer">
+                <label htmlFor="hasWifi">
+                  <h2>Possui acesso a Wifi</h2>
+                </label>
+                <input type="checkbox" name="" id="hasWifi" />
+              </div>
+            </div>
+          </div>
+          <div className="button">
+            <button type="submit">Aplicar filtros</button>
           </div>
         </div>
       </ModalContainer>

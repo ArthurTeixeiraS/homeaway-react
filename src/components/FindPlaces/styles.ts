@@ -4,6 +4,10 @@ export const FindPlacesContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  h2 {
+    text-align: center;
+    padding: 5rem;
+  }
   .roomBlocksContainer {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));

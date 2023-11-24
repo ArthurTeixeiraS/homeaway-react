@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-  baseURL: 'http://localhost:8080/api',
+  baseURL: 'https://2cef-177-200-4-83.ngrok-free.app/api',
 })
 
 export const UseAPI = () => ({
@@ -30,6 +30,44 @@ export const UseAPI = () => ({
         'ngrok-skip-browser-warning': 'true',
         'Content-Type': 'multipart/form-data',
       },
+    })
+    return response.data
+  },
+
+  findRooms: async (
+    token: string,
+    city?: string,
+    checkin?: Date,
+    checkout?: Date,
+    maxPeople?: number,
+  ) => {
+    const response = await api.get(
+      `/rooms/city/${city}/check-in/${checkin}/check-out/${checkout}/max-people/${maxPeople}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    )
+    return response.data
+  },
+
+  forgotPassword: async (email: string) => {
+    const response = await api.post(`/passwords/send-reset-email`, {
+      email,
+    })
+    return response.data
+  },
+
+  sendPasswordCode: async (
+    code: string,
+    newPassword: string,
+    reapeatNewPassword: string,
+  ) => {
+    const response = await axios.post(`/passwords/forgot-password-reset`, {
+      code,
+      newPassword,
+      reapeatNewPassword,
     })
     return response.data
   },

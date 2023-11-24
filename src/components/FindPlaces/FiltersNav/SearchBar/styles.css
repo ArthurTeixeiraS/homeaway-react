@@ -11,19 +11,31 @@
     height: 5rem;
   }
   
-  input {
+  .inpt-search {
     background-color: transparent;
     border: none;
-    font-size: 1.25rem;
+    font-size: 1.8rem;
     width: 100%;
     margin-left: 5px;
     height: 5rem;
   }
   
-  input:focus {
+  .inpt-search:focus {
     outline: none;
+    border:0;
   }
   
   #search-icon {
-    color: royalblue;
+    color: #4086F4;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  button{
+    background-color: transparent;
+    border: 0;
+    margin-right: 0.5rem;
+  }
+  button:hover{
+    cursor: pointer;
   }

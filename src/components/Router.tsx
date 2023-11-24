@@ -19,6 +19,7 @@ import { FindPlaces } from './FindPlaces'
 import { ImageEditForm } from './HotelEdit/ImageForm'
 import { RoomEditPage } from '../pages/Room/RoomEdit'
 import { RoomImageEditForm } from './Room/RoomEdit/ImageForm'
+import { ForgotPasswordPage } from '../pages/ForgotPassword'
 
 export function Router() {
   return (
@@ -30,14 +31,8 @@ export function Router() {
           <Route path="/login" element={<Login />} />
           <Route path="/singup" element={<Register />} />
           <Route path="/singupPartner" element={<RegisterPartner />} />
-          <Route
-            path="/findPlaces"
-            element={
-              <RequireAuth>
-                <FindPlaces />
-              </RequireAuth>
-            }
-          />
+          <Route path="/forgotPassword" element={<ForgotPasswordPage />} />
+          <Route path="/findPlaces" element={<FindPlaces />} />
           <Route
             path="/users/me"
             element={
