@@ -3,6 +3,30 @@ import styled from 'styled-components'
 export const HotelCard = styled.div`
   transition: all 0.2s ease-in-out;
   padding: 1rem;
+  a {
+    img {
+      width: 28rem;
+      height: 27rem;
+      border-radius: 1.5rem;
+    }
+  }
+  .infoContainer {
+    .infos {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      p {
+        font-weight: bold;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-left: -1rem;
+        #faLocation {
+          padding-right: 0.2rem;
+        }
+      }
+    }
+  }
   &:hover {
     transform: scale(1.05);
   }

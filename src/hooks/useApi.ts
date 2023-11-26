@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-  baseURL: 'https://2cef-177-200-4-83.ngrok-free.app/api',
+  baseURL: 'http://localhost:8080/api',
 })
 
 export const UseAPI = () => ({
@@ -35,21 +35,15 @@ export const UseAPI = () => ({
   },
 
   findRooms: async (
-    token: string,
-    city?: string,
-    checkin?: Date,
-    checkout?: Date,
-    maxPeople?: number,
+    city: string,
+    checkin: string,
+    checkout: string,
+    maxPeople: number,
   ) => {
     const response = await api.get(
       `/rooms/city/${city}/check-in/${checkin}/check-out/${checkout}/max-people/${maxPeople}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      },
     )
-    return response.data
+    return response
   },
 
   forgotPassword: async (email: string) => {

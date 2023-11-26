@@ -38,9 +38,9 @@ export function Header() {
         <div className="middleOptions">
           {auth.user?.role !== 'HOST' && (
             <ul className="nav-links">
-              <li>
+              {/* <li>
                 <Link to="/findPlaces">Encontrar Imóvel</Link>
-              </li>
+              </li> */}
               <li>
                 <Link to="/rentalGuides">Guia para aluguéis</Link>
               </li>
@@ -84,9 +84,6 @@ export function Header() {
               )}
               {auth.user?.role === 'TENANT' && (
                 <>
-                  <li>
-                    <Link to="users/myHotels">Minhas resesrvas</Link>
-                  </li>
                   <li>
                     <Link to="users/reservations">Reservas</Link>
                   </li>

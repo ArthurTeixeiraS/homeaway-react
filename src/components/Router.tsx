@@ -20,6 +20,8 @@ import { ImageEditForm } from './HotelEdit/ImageForm'
 import { RoomEditPage } from '../pages/Room/RoomEdit'
 import { RoomImageEditForm } from './Room/RoomEdit/ImageForm'
 import { ForgotPasswordPage } from '../pages/ForgotPassword'
+import { RoomPage } from '../pages/Room/RoomPage'
+import { ReservationPage } from '../pages/Reservation'
 
 export function Router() {
   return (
@@ -46,6 +48,14 @@ export function Router() {
             element={
               <RequireAuth>
                 <AccountEditPage />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/users/reservations/"
+            element={
+              <RequireAuth>
+                <ReservationPage />
               </RequireAuth>
             }
           />
@@ -126,6 +136,14 @@ export function Router() {
             element={
               <RequireAuth>
                 <RoomImageEditForm />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/room/:id/:checkin/:checkout/:maxPeople"
+            element={
+              <RequireAuth>
+                <RoomPage />
               </RequireAuth>
             }
           />

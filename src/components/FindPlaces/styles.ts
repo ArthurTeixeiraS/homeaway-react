@@ -4,14 +4,17 @@ export const FindPlacesContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  h2 {
-    text-align: center;
+  .container {
     padding: 5rem;
+    .titleContainer {
+      font-size: 1.8rem;
+      padding-bottom: 1rem;
+    }
   }
-  .roomBlocksContainer {
+  .roomsContainer {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-gap: 1rem;
-    padding: 2rem 5rem;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 2rem 0;
+    grid-auto-rows: auto;
   }
 `

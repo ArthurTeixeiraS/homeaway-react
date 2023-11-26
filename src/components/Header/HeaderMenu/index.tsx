@@ -10,7 +10,7 @@ import hamburguerMenu from '../../../assets/gg_menu.svg'
 import userCircle from '../../../assets/bx_bxs-user-circle.svg'
 import { FaSearch } from 'react-icons/fa'
 import { Link, useNavigate } from 'react-router-dom'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { AuthContext } from '../../../contexts/Auth/AuthContext'
 
 function verificaData() {
@@ -30,6 +30,16 @@ function abreFechaDropdown() {
 export function MainMenuHeader() {
   const auth = useContext(AuthContext)
   const navigate = useNavigate()
+
+  const [selectedCheckInDate, setSelectedCheckInDate] = useState<string>(
+    verificaData(),
+  )
+
+  const handleCheckInDateChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    setSelectedCheckInDate(event.target.value)
+  }
 
   const handleLogout = async () => {
     await auth.singout()
@@ -51,9 +61,9 @@ export function MainMenuHeader() {
 
           {auth.user?.role !== 'HOST' && (
             <ul className="nav-links">
-              <li>
+              {/* <li>
                 <Link to="/findPlaces">Encontrar Imóvel</Link>
-              </li>
+              </li> */}
               <li>
                 <Link to="/rentalGuides">Guia para aluguéis</Link>
               </li>
@@ -141,7 +151,7 @@ export function MainMenuHeader() {
           </div>
           <div className="search-box">
             {auth.user?.role === 'TENANT' || !auth.user ? (
-              <form action="" method="get">
+              <form action="/findPlaces" method="get">
                 <div className="location-input">
                   <label htmlFor="location">Indo para:</label>
                   <input
@@ -149,6 +159,7 @@ export function MainMenuHeader() {
                     name="location"
                     id="location"
                     placeholder="Que cidade você prefere?"
+                    required
                   />
                 </div>
                 <div className="checkin-input">
@@ -158,6 +169,9 @@ export function MainMenuHeader() {
                     name="checkin"
                     id="checkin"
                     min={verificaData()}
+                    value={selectedCheckInDate}
+                    onChange={handleCheckInDateChange}
+                    required
                   />
                 </div>
                 <div className="checkout-input">
@@ -166,24 +180,24 @@ export function MainMenuHeader() {
                     type="date"
                     name="checkout"
                     id="checkout"
-                    min={verificaData()}
+                    min={selectedCheckInDate}
+                    required
                   />
                 </div>
                 <div className="location-input">
-                  <label htmlFor="location">Indo para:</label>
+                  <label htmlFor="location">Visitantes</label>
                   <input
                     type="number"
                     name="maxPeople"
                     id="maxPeople"
                     placeholder="Quartos"
+                    required
                   />
                 </div>
 
-                <Link to="/">
-                  <button type="button">
-                    <FaSearch color="white" size={15} />
-                  </button>
-                </Link>
+                <button type="submit">
+                  <FaSearch color="white" size={15} />
+                </button>
               </form>
             ) : (
               <div className="buttonForStart">
