@@ -46,6 +46,7 @@ export function ReservationHistoryTenant({
               <h2>Preço total do aluguel: {reservationHistory.totalPrice}</h2>
               <h3>Entrada: {reservationHistory.checkIn}</h3>
               <h3>Saída: {reservationHistory.checkOut}</h3>
+              <h3>Classificação recebida: {}</h3>
             </div>
           </div>
           <div className="status">

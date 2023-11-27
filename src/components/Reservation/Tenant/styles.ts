@@ -29,7 +29,7 @@ export const Container = styled.div`
     .buttons {
       margin-bottom: 2rem;
       margin-left: 1rem;
-      button {
+      .actbutton {
         margin-right: 2rem;
         padding: 1rem 3rem;
         font-size: 1.3rem;

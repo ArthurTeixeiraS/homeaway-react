@@ -10,7 +10,7 @@ interface RoomCardProps {
   name: string
   description: string
   dailyPrice: number
-  classification: string
+  classification: number
   maxPeople: number
   referenceImage: string
   hotelId: string

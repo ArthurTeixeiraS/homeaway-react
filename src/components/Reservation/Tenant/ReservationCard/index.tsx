@@ -1,7 +1,9 @@
-import { Card } from './styles'
+import { CancelButton, CardReservation } from './styles'
 import { Reservation } from '..'
 import axios from 'axios'
 import { BaseURL } from '../../../../main'
+import { FeedBackComponent } from '../ReservationFeedback'
+import { useState } from 'react'
 
 interface ReservationData {
   reservation: Reservation
@@ -10,7 +12,29 @@ interface ReservationData {
 export function ReservationCardTenant({ reservation }: ReservationData) {
   const hotelId = window.location.href.split('/')[6]
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const items: number[] = [...(new Array(5).keys() as any)]
+
+  const handlePayment = async () => {
+    try {
+      const response = await axios.post(
+        `${BaseURL}/stripe/create-payment/${reservation.id}`,
+        null,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('authToken')}`,
+            'ngrok-skip-browser-warning': 'true',
+          },
+        },
+      )
+      if (response.status === 200) {
+        const paymentLink = response.data.url
+        window.open(paymentLink)
+      }
+    } catch (e) {
+      console.error('Erro ao realizar pagamento: ', e)
+    }
+  }
   const handleStatusChange = async (modifier: string) => {
     try {
       const response = await axios.post(
@@ -33,8 +57,64 @@ export function ReservationCardTenant({ reservation }: ReservationData) {
     }
   }
 
+  const [activeIndex, setActiveIndex] = useState<number>()
+
+  const onClickStar = (index: number) => {
+    setActiveIndex(index)
+  }
+
+  const handleClassification = async (classification: number) => {
+    if (classification === 0) {
+      alert('Classificação precisa ser maior que 0!')
+    }
+    try {
+      console.log(classification)
+      const response = await axios.post(
+        `${BaseURL}/users/reservations/${reservation.id}/classify`,
+        {
+          // eslint-disable-next-line object-shorthand
+          classification: classification,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('authToken')}`,
+            'ngrok-skip-browser-warning': 'true',
+          },
+        },
+      )
+      if (response.status === 200) {
+        window.location.reload()
+      }
+    } catch (err) {
+      console.error('Erro ao classificar', err)
+    }
+  }
+
+  const handleCancelClassification = async () => {
+    try {
+      const response = await axios.post(
+        `${BaseURL}/users/reservations/${reservation.id}/classify`,
+        {
+          // eslint-disable-next-line object-shorthand
+          classification: 0,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('authToken')}`,
+            'ngrok-skip-browser-warning': 'true',
+          },
+        },
+      )
+      if (response.status === 200) {
+        window.location.reload()
+      }
+    } catch (err) {
+      console.error('Erro ao classificar', err)
+    }
+  }
+
   return (
-    <Card>
+    <CardReservation>
       {reservation.status !== 'CANCELED' &&
         reservation.status !== 'FINISHED' && (
           <>
@@ -60,20 +140,63 @@ export function ReservationCardTenant({ reservation }: ReservationData) {
             </div>
             <div className="buttons">
               {reservation.status === 'WAITING_CONFIRMATION' && (
-                <button className="waiting">Aguardando confirmação</button>
+                <>
+                  <button className="waiting actbutton">
+                    Aguardando confirmação
+                  </button>
+                  <CancelButton onClick={() => handleStatusChange('CANCELED')}>
+                    Cancelar
+                  </CancelButton>
+                </>
               )}
+
               {reservation.status === 'PENDING_PAYMENT' && (
-                <button>Realizar Pagamento</button>
+                <>
+                  <button className="actbutton" onClick={() => handlePayment()}>
+                    Realizar Pagamento
+                  </button>
+                  <CancelButton onClick={() => handleStatusChange('CANCELED')}>
+                    Cancelar
+                  </CancelButton>
+                </>
               )}
+
               {reservation.status === 'PAID' && (
-                <button>Esperando Finalização</button>
+                <>
+                  <button className="waiting actbutton">
+                    Esperando Finalização
+                  </button>
+                  <CancelButton onClick={() => handleStatusChange('CANCELED')}>
+                    Cancelar
+                  </CancelButton>
+                </>
               )}
+
               {reservation.status === 'WAITING_CLASSIFICATION' && (
-                <button>Dê uma Classificação</button>
+                <>
+                  <div className="starComponent">
+                    {items.map((index) => (
+                      <FeedBackComponent
+                        onClick={() => onClickStar(index)}
+                        isActive={index <= activeIndex!}
+                        key={`star_${index}`}
+                      />
+                    ))}
+                  </div>
+                  <button
+                    className="actbutton"
+                    onClick={() => handleClassification(activeIndex! + 1)}
+                  >
+                    Classifique sua experiência
+                  </button>
+                  <CancelButton onClick={() => handleCancelClassification()}>
+                    Não classificar
+                  </CancelButton>
+                </>
               )}
             </div>
           </>
         )}
-    </Card>
+    </CardReservation>
   )
 }

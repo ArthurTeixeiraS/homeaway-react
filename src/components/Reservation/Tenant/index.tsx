@@ -85,6 +85,7 @@ export function ReservationComponentTenant() {
       )
       if (response.status === 200) {
         setReservationHistory(response.data)
+        console.log(response.data)
         setDataLoaded(true)
       }
     }
@@ -107,6 +108,7 @@ export function ReservationComponentTenant() {
       <div className="reservationsContainer">
         <div className="buttons">
           <button
+            className="actbutton"
             onClick={() => {
               setChangeForm(true)
             }}
@@ -115,6 +117,7 @@ export function ReservationComponentTenant() {
           </button>
           <button
             id="removebtn"
+            className="actbutton"
             onClick={() => {
               setChangeForm(false)
             }}

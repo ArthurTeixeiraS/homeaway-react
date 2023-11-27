@@ -11,7 +11,7 @@ interface RoomData {
   name: string
   description: string
   dailyPrice: number
-  classification: string
+  classification: number
   maxPeople: number
   referenceImage: string
   hotelId: string
@@ -33,6 +33,7 @@ export function HotelsComponent() {
         })
         const data = await response.data
         setRoomData(data)
+        console.log(data)
         setDataLoaded(true)
       } catch (err) {
         setDataLoaded(false)

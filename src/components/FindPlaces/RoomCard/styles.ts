@@ -20,7 +20,7 @@ export const HotelCard = styled.div`
         display: flex;
         flex-direction: row;
         align-items: center;
-        margin-left: -1rem;
+        margin-left: -2rem;
         #faLocation {
           padding-right: 0.2rem;
         }

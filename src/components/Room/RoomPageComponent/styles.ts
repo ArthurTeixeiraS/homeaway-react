@@ -154,13 +154,15 @@ export const Container = styled.div`
   }
   .descAndHotel {
     display: flex;
+    justify-content: space-between;
     img {
       width: 22rem;
       height: 20rem;
       border-radius: 2rem;
     }
     .hotelInfo {
-      margin-left: 35rem;
+      margin-left: 17rem;
+      margin-right: 8rem;
       margin-top: 5rem;
       display: flex;
       .infos {
@@ -176,8 +178,9 @@ export const Container = styled.div`
   .description {
     margin-top: 5rem;
     display: flex;
+    justify-content: flex-start;
     flex-direction: column;
-    justify-content: start;
+
     margin-left: 5rem;
     h1 {
       font-size: 3rem;

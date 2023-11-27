@@ -26,9 +26,13 @@ export const Container = styled.div`
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      padding: 2rem;
+      padding: 1rem;
       input[type='file'] {
         display: none;
+      }
+      label {
+        display: flex;
+        align-items: center;
       }
     }
     h1 {

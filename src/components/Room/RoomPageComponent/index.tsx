@@ -185,11 +185,9 @@ export function RoomPageComponent() {
               <div className="description">
                 <h1>Descrição</h1>
                 <p>
-                  <strong>{roomData.name}</strong> <br />
-                  {roomData.description} <br /> <br />
-                  <strong>{roomData.hotel.name}</strong> <br />
-                  {roomData.hotel.description}
+                  <strong>{roomData.name}</strong>
                 </p>
+                <p>{roomData.description}</p>
               </div>
               <div className="hotelInfo">
                 <img src={roomData.hotel.referenceImage} alt="" />
@@ -207,8 +205,8 @@ export function RoomPageComponent() {
                   )}
                   <h4>
                     {roomData.hotel.street}, {roomData.hotel.number} ,{' '}
-                    {roomData.hotel.neighbourhood}, {roomData.hotel.city},{' '}
-                    {roomData.hotel.uf}
+                    {roomData.hotel.neighbourhood}, <br /> {roomData.hotel.city}
+                    , {roomData.hotel.uf}
                   </h4>
                 </div>
               </div>

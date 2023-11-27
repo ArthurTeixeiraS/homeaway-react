@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Card = styled.div`
+export const CardReservation = styled.div`
   display: flex;
   justify-content: space-between;
   height: 100%;
@@ -45,11 +45,12 @@ export const Card = styled.div`
     align-items: center;
     justify-content: center;
     padding: 2rem;
-    #removebtn {
-      background-color: ${(props) => props.theme['background-gray']};
-      color: ${(props) => props.theme.black};
+    .starComponent {
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    button {
+    .actbutton {
       margin: 1rem 0 0 0;
       width: 100%;
       padding: 1rem 3rem;
@@ -59,13 +60,9 @@ export const Card = styled.div`
       color: white;
       font-size: 1.5rem;
       transition: all 0.2s ease-in-out;
+      margin-bottom: 1rem;
       &:hover {
         filter: brightness(90%);
-      }
-      .remove {
-        background-color: #e8eaec;
-        color: ${(props) => props.theme.black};
-        /* border: 1px solid ${(props) => props.theme.black}; */
       }
     }
     .waiting {
@@ -74,5 +71,18 @@ export const Card = styled.div`
         filter: brightness(1);
       }
     }
+  }
+`
+
+export const CancelButton = styled.button`
+  background-color: ${(props) => props.theme['background-gray']};
+  color: ${(props) => props.theme.black};
+  padding: 1rem 3rem;
+  border-radius: 1.5rem;
+  border: 0;
+  font-size: 1.5rem;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    filter: brightness(90%);
   }
 `
