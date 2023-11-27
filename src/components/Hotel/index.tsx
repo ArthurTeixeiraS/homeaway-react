@@ -56,9 +56,17 @@ export function HotelsComponent() {
               </div>
               Aqui estão os dados do seu hotel...
             </h1>
-            <Link to={`/users/myHotels/room/addRoom/${hotelId}`}>
-              <button>Adicionar Quarto</button>
-            </Link>
+            <div className="buttons">
+              <Link
+                className="reserv"
+                to={`/users/host/reservations/${hotelId}`}
+              >
+                <button>Gerenciar reservas</button>
+              </Link>
+              <Link to={`/users/myHotels/room/addRoom/${hotelId}`}>
+                <button>Adicionar Quarto</button>
+              </Link>
+            </div>
           </TitleContainer>
           <div className="cardContainer">
             {Array.isArray(roomData) && roomData.length > 0 ? (

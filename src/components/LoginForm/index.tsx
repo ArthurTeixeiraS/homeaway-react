@@ -25,8 +25,11 @@ export function LoginForm() {
     if (formData.email && formData.password) {
       const isLogged = await auth.singin(formData.email, formData.password)
       if (isLogged) {
-        alert('Login efetuado com sucesso!')
-        navigate('/users/me')
+        if (
+          confirm('Login efetuado com sucesso! Deseja ir para o seu perfil?')
+        ) {
+          navigate('/users/me')
+        }
       } else {
         alert('Falha ao logar, tente novamente.')
       }

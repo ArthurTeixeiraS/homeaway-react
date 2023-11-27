@@ -2,7 +2,7 @@ import roomBackGround from '../../../assets/backgrounds/hotel-background.png'
 import { Link } from 'react-router-dom'
 import { HotelCard } from './styles'
 import { Room } from '..'
-import { FaLocationArrow } from 'react-icons/fa'
+import { FaLocationArrow, FaStar } from 'react-icons/fa'
 
 type RoomCardProps = {
   room: Room
@@ -30,10 +30,22 @@ export function RoomCardComponent({ room, filterData }: RoomCardProps) {
             {room.hotel.city}
           </p>
         </div>
-        <div>
+        <div className="priceClassification">
           <p>
             <strong>R$ {room.dailyPrice}</strong> p/dia
-            <p></p>
+            <strong>
+              <p className="classification">
+                Classificação:
+                {room.classification === 0 ? (
+                  <span>Sem Classificação</span>
+                ) : (
+                  <span>
+                    <FaStar color={'#ffb60a'} />
+                    {room.classification}
+                  </span>
+                )}
+              </p>
+            </strong>
           </p>
         </div>
       </div>

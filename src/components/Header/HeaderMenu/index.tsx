@@ -102,11 +102,6 @@ export function MainMenuHeader() {
                       <Link to="users/myHotels">Meus hotéis</Link>
                     </li>
                     <li className="host">
-                      <Link to="users/host/reservations">
-                        Reservas Pendentes
-                      </Link>
-                    </li>
-                    <li className="host">
                       <Link to="users/me">Perfil</Link>
                     </li>
                     <li className="host">
@@ -117,10 +112,7 @@ export function MainMenuHeader() {
                 {auth.user && auth.user.role === 'TENANT' && (
                   <>
                     <li>
-                      <Link to="users/myReservations">Quartos Reservados</Link>
-                    </li>
-                    <li>
-                      <Link to="users/history">Histórico de compras</Link>
+                      <Link to="users/client/reservations">Reservas</Link>
                     </li>
                     <li>
                       <Link to="users/me">Perfil</Link>

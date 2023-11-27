@@ -17,8 +17,10 @@ export function RoomPageComponent() {
     dailyPrice: 0,
     maxPeople: 0,
     referenceImage: '',
+    classification: 0,
     hotel: {
       id: '',
+      classification: 0,
       name: '',
       description: '',
       uf: '',
@@ -40,7 +42,11 @@ export function RoomPageComponent() {
   useEffect(() => {
     const getRoomData = async () => {
       try {
-        const response = await axios.get(`${BaseURL}/rooms/${roomId}`)
+        const response = await axios.get(`${BaseURL}/rooms/${roomId}`, {
+          headers: {
+            'ngrok-skip-browser-warning': 'true',
+          },
+        })
         if (response.status === 200) {
           setRoomData(response.data)
           setDataLoaded(true)
@@ -117,10 +123,15 @@ export function RoomPageComponent() {
                   </h1>
                 </div>
                 <div className="feedback">
-                  <h3>
-                    Os usuários avaliam esse quarto com 5{' '}
-                    <FaStar color={'#ffb60a'} />
-                  </h3>
+                  {roomData.classification !== 0 ? (
+                    <h3>
+                      Os usuários avaliam esse quarto com{' '}
+                      {roomData.classification}
+                      <FaStar color={'#ffb60a'} />
+                    </h3>
+                  ) : (
+                    <h3>Sem classificação</h3>
+                  )}
                 </div>
                 <div className="reserveNow">
                   <button onClick={handleReservation}>Alugar agora</button>
@@ -185,10 +196,15 @@ export function RoomPageComponent() {
                 <div className="infos">
                   <h2>Pertence ao hotel:</h2>
                   <h2>{roomData.hotel.name}</h2>
-                  <h3>
-                    Os usuários avaliam esse quarto com 5{' '}
-                    <FaStar color={'#ffb60a'} />
-                  </h3>
+                  {roomData.hotel.classification !== 0 ? (
+                    <h3>
+                      Os usuários avaliam esse quarto com{' '}
+                      {roomData.hotel.classification}
+                      <FaStar color={'#ffb60a'} />
+                    </h3>
+                  ) : (
+                    <h3>Sem Classificação</h3>
+                  )}
                   <h4>
                     {roomData.hotel.street}, {roomData.hotel.number} ,{' '}
                     {roomData.hotel.neighbourhood}, {roomData.hotel.city},{' '}

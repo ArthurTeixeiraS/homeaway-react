@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-  baseURL: 'http://localhost:8080/api',
+  baseURL: 'https://6c38-177-200-4-83.ngrok-free.app/api',
 })
 
 export const UseAPI = () => ({
@@ -42,6 +42,11 @@ export const UseAPI = () => ({
   ) => {
     const response = await api.get(
       `/rooms/city/${city}/check-in/${checkin}/check-out/${checkout}/max-people/${maxPeople}`,
+      {
+        headers: {
+          'ngrok-skip-browser-warning': 'true',
+        },
+      },
     )
     return response
   },

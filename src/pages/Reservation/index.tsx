@@ -1,16 +1,10 @@
-import { useContext } from 'react'
 import { Container } from '../MyHotels/styles'
-import { AuthContext } from '../../contexts/Auth/AuthContext'
+import { ReservationComponentHost } from '../../components/Reservation/Host'
 
 export function ReservationPage() {
-  const auth = useContext(AuthContext)
   return (
     <Container>
-      {auth.user?.role === 'TENANT' ? (
-        <h1>Pagina de reservas do Cliente</h1>
-      ) : (
-        <h1>Pagina de reservas do Propietário</h1>
-      )}
+      <ReservationComponentHost />
     </Container>
   )
 }

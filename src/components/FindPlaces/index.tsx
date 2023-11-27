@@ -6,6 +6,7 @@ import { RoomCardComponent } from './RoomCard'
 
 export type Room = {
   id: string
+  classification: number
   name: string
   description: string
   dailyPrice: number
@@ -50,7 +51,7 @@ export function FindPlaces() {
         )
 
         if (response.status === 200) {
-          setRooms(response.data.content) // Verifique se 'response.content' é a estrutura correta
+          setRooms(response.data.content)
           setDataLoaded(true)
         }
       } catch (err) {
@@ -68,7 +69,7 @@ export function FindPlaces() {
         {dataLoaded ? (
           <>
             <div className="titleContainer">
-              <h1>Hotéis disponíveis</h1>
+              <h1>Quartos disponíveis</h1>
               <p>com base no que você buscou</p>
             </div>
             <div className="roomsContainer">

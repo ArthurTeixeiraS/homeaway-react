@@ -26,6 +26,19 @@ export const HotelCard = styled.div`
         }
       }
     }
+    .priceClassification {
+      display: flex;
+      .classification {
+        margin-left: -0.5rem;
+        display: flex;
+        span {
+          margin-left: 0.3rem;
+          display: flex;
+          align-items: center;
+          flex-direction: row;
+        }
+      }
+    }
   }
   &:hover {
     transform: scale(1.05);

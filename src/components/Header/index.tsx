@@ -72,9 +72,6 @@ export function Header() {
                     <Link to="users/myHotels">Meus hotéis</Link>
                   </li>
                   <li className="host">
-                    <Link to="users/host/reservations">Reservas Pendentes</Link>
-                  </li>
-                  <li className="host">
                     <Link to="users/me">Perfil</Link>
                   </li>
                   <li className="host">
@@ -85,7 +82,7 @@ export function Header() {
               {auth.user?.role === 'TENANT' && (
                 <>
                   <li>
-                    <Link to="users/reservations">Reservas</Link>
+                    <Link to="users/client/reservations">Reservas</Link>
                   </li>
                   <li>
                     <Link to="users/me">Perfil</Link>

@@ -9,8 +9,12 @@ export const Container = styled.div`
 export const TitleContainer = styled.div`
   display: flex;
   margin-bottom: 5rem;
-  justify-content: space-between;
   align-items: center;
+  .buttons {
+    .reserv {
+      margin-right: 2rem;
+    }
+  }
   a {
     text-decoration: none;
     button {
@@ -33,6 +37,7 @@ export const TitleContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-right: 30rem;
     .arrow {
       margin-right: 1rem;
       a {

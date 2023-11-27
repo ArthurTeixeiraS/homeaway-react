@@ -22,6 +22,7 @@ import { RoomImageEditForm } from './Room/RoomEdit/ImageForm'
 import { ForgotPasswordPage } from '../pages/ForgotPassword'
 import { RoomPage } from '../pages/Room/RoomPage'
 import { ReservationPage } from '../pages/Reservation'
+import { ReservationPageTenant } from '../pages/Reservation/Tenant'
 
 export function Router() {
   return (
@@ -52,10 +53,18 @@ export function Router() {
             }
           />
           <Route
-            path="/users/reservations/"
+            path="/users/host/reservations/:id"
             element={
               <RequireAuth>
                 <ReservationPage />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/users/client/reservations/"
+            element={
+              <RequireAuth>
+                <ReservationPageTenant />
               </RequireAuth>
             }
           />
