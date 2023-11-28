@@ -43,7 +43,7 @@ export function AccountFormTenant() {
             <p>Cadastrado em: {auth.user?.registrationDate.split('T')[0]}</p>
           </div>
           <div className="divButton">
-            <Link to="/client/reservations">
+            <Link to="/users/client/reservations/">
               <button>Suas Reservas</button>
             </Link>
           </div>
