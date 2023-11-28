@@ -135,9 +135,6 @@ export function RoomPageComponent() {
                 </div>
                 <div className="reserveNow">
                   <button onClick={handleReservation}>Alugar agora</button>
-                  <p>
-                    Você será redirecionado para fazer o pagamento via Stripe.
-                  </p>
                 </div>
               </div>
             </div>

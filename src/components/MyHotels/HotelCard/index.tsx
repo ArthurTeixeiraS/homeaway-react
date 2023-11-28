@@ -35,6 +35,11 @@ export function HotelCardComponent({ hotel }: HotelCardProps) {
         <p>
           {hotel.street}, {hotel.number} em {hotel.city}
         </p>
+        {hotel.classification !== 0 ? (
+          <p>Classificação: {hotel.classification} Estrelas</p>
+        ) : (
+          <p>Sem Classificação</p>
+        )}
       </div>
       <div className="buttons">
         <Link to={`/users/myHotels/edit/${hotel.id}`}>

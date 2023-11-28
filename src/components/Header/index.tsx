@@ -41,9 +41,9 @@ export function Header() {
               {/* <li>
                 <Link to="/findPlaces">Encontrar Imóvel</Link>
               </li> */}
-              <li>
+              {/* <li>
                 <Link to="/rentalGuides">Guia para aluguéis</Link>
-              </li>
+              </li> */}
             </ul>
           )}
         </div>

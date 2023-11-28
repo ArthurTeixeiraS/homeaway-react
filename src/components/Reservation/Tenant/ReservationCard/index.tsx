@@ -10,7 +10,7 @@ interface ReservationData {
 }
 
 export function ReservationCardTenant({ reservation }: ReservationData) {
-  const hotelId = window.location.href.split('/')[6]
+  /*   const hotelId = window.location.href.split('/')[6] */
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const items: number[] = [...(new Array(5).keys() as any)]
@@ -35,7 +35,7 @@ export function ReservationCardTenant({ reservation }: ReservationData) {
       console.error('Erro ao realizar pagamento: ', e)
     }
   }
-  const handleStatusChange = async (modifier: string) => {
+  /*   const handleStatusChange = async (modifier: string) => {
     try {
       const response = await axios.post(
         `${BaseURL}/hotels/${hotelId}/reservations/${reservation.id}`,
@@ -55,7 +55,7 @@ export function ReservationCardTenant({ reservation }: ReservationData) {
     } catch (err) {
       console.error('Erro ao realizar reserva', err)
     }
-  }
+  } */
 
   const [activeIndex, setActiveIndex] = useState<number>()
 
@@ -113,6 +113,28 @@ export function ReservationCardTenant({ reservation }: ReservationData) {
     }
   }
 
+  const handleCancelChange = async () => {
+    try {
+      const response = await axios.put(
+        `${BaseURL}/users/reservations/cancel`,
+        {
+          reserveId: reservation.id,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('authToken')}`,
+            'ngrok-skip-browser-warning': 'true',
+          },
+        },
+      )
+      if (response.status === 200) {
+        window.location.reload()
+      }
+    } catch (err) {
+      console.error('Erro ao cancelar reserva: ', err)
+    }
+  }
+
   return (
     <CardReservation>
       {reservation.status !== 'CANCELED' &&
@@ -144,7 +166,7 @@ export function ReservationCardTenant({ reservation }: ReservationData) {
                   <button className="waiting actbutton">
                     Aguardando confirmação
                   </button>
-                  <CancelButton onClick={() => handleStatusChange('CANCELED')}>
+                  <CancelButton onClick={() => handleCancelChange()}>
                     Cancelar
                   </CancelButton>
                 </>
@@ -155,7 +177,7 @@ export function ReservationCardTenant({ reservation }: ReservationData) {
                   <button className="actbutton" onClick={() => handlePayment()}>
                     Realizar Pagamento
                   </button>
-                  <CancelButton onClick={() => handleStatusChange('CANCELED')}>
+                  <CancelButton onClick={() => handleCancelChange()}>
                     Cancelar
                   </CancelButton>
                 </>
@@ -166,9 +188,6 @@ export function ReservationCardTenant({ reservation }: ReservationData) {
                   <button className="waiting actbutton">
                     Esperando Finalização
                   </button>
-                  <CancelButton onClick={() => handleStatusChange('CANCELED')}>
-                    Cancelar
-                  </CancelButton>
                 </>
               )}
 

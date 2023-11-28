@@ -63,6 +63,7 @@ export function RoomEditForm() {
     event.preventDefault()
 
     try {
+      console.log(formData)
       const response = await axios.put(
         `${BaseURL}/rooms/${idRoom}`,
         {

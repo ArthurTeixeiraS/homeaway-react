@@ -20,6 +20,7 @@ interface ReservationData {
       maxPeople: number
     }
     totalPrice: number
+    classification: number
   }
 }
 
@@ -50,6 +51,15 @@ export function ReservationHistory({ reservationHistory }: ReservationData) {
               <h2>Preço total do aluguel: {reservationHistory.totalPrice}</h2>
               <h3>Entrada: {reservationHistory.checkIn}</h3>
               <h3>Saída: {reservationHistory.checkOut}</h3>
+              <h3>
+                {reservationHistory.classification === 0 ? (
+                  <>Não Classificado</>
+                ) : (
+                  <>
+                    Classificação: {reservationHistory.classification} Estrelas
+                  </>
+                )}
+              </h3>
             </div>
           </div>
           <div className="status">

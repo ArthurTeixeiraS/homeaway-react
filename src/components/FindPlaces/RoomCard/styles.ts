@@ -14,13 +14,14 @@ export const HotelCard = styled.div`
     .infos {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      h3 {
+        width: 70%;
+      }
       p {
         font-weight: bold;
         display: flex;
         flex-direction: row;
         align-items: center;
-        margin-left: -2rem;
         #faLocation {
           padding-right: 0.2rem;
         }

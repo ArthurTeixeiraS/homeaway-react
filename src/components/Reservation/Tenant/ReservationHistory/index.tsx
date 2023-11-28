@@ -18,6 +18,7 @@ interface ReservationData {
       id: string
       name: string
     }
+    classification: number
   }
 }
 
@@ -46,7 +47,15 @@ export function ReservationHistoryTenant({
               <h2>Preço total do aluguel: {reservationHistory.totalPrice}</h2>
               <h3>Entrada: {reservationHistory.checkIn}</h3>
               <h3>Saída: {reservationHistory.checkOut}</h3>
-              <h3>Classificação recebida: {}</h3>
+              <h3>
+                {reservationHistory.classification === 0 ? (
+                  <p>Não Classificado</p>
+                ) : (
+                  <div>
+                    Classificação recebida: {reservationHistory.classification}
+                  </div>
+                )}
+              </h3>
             </div>
           </div>
           <div className="status">

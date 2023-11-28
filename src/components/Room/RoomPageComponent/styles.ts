@@ -154,17 +154,16 @@ export const Container = styled.div`
   }
   .descAndHotel {
     display: flex;
-    justify-content: space-between;
     img {
       width: 22rem;
       height: 20rem;
       border-radius: 2rem;
     }
     .hotelInfo {
-      margin-left: 17rem;
       margin-right: 8rem;
       margin-top: 5rem;
       display: flex;
+      justify-content: start;
       .infos {
         margin-top: 2rem;
         margin-left: 1rem;
@@ -176,6 +175,7 @@ export const Container = styled.div`
     }
   }
   .description {
+    width: 40%;
     margin-top: 5rem;
     display: flex;
     justify-content: flex-start;
@@ -188,6 +188,7 @@ export const Container = styled.div`
     p {
       margin-top: 1rem;
       font-size: 1.5rem;
+      width: 90%;
     }
   }
 `

@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-  baseURL: 'http://localhost:8080/api',
+  baseURL: 'https://02b9-177-200-4-83.ngrok-free.app/api',
 })
 
 export const UseAPI = () => ({

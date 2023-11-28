@@ -11,6 +11,7 @@ export type Hotel = {
   hasWifi: boolean
   hasRoomService: boolean
   referenceImage: string
+  classification: number
   user: {
     id: string
     name: string
