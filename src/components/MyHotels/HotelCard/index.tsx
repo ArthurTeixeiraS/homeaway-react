@@ -36,7 +36,7 @@ export function HotelCardComponent({ hotel }: HotelCardProps) {
           {hotel.street}, {hotel.number} em {hotel.city}
         </p>
         {hotel.classification !== 0 ? (
-          <p>Classificação: {hotel.classification} Estrelas</p>
+          <p>Classificação: {hotel.classification.toFixed(2)} Estrelas</p>
         ) : (
           <p>Sem Classificação</p>
         )}

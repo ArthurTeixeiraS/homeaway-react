@@ -126,7 +126,7 @@ export function RoomPageComponent() {
                   {roomData.classification !== 0 ? (
                     <h3>
                       Os usuários avaliam esse quarto com{' '}
-                      {roomData.classification}
+                      {roomData.classification.toFixed(2)}
                       <FaStar color={'#ffb60a'} />
                     </h3>
                   ) : (
@@ -194,7 +194,7 @@ export function RoomPageComponent() {
                   {roomData.hotel.classification !== 0 ? (
                     <h3>
                       Os usuários avaliam esse quarto com{' '}
-                      {roomData.hotel.classification}
+                      {roomData.hotel.classification.toFixed(2)}
                       <FaStar color={'#ffb60a'} />
                     </h3>
                   ) : (

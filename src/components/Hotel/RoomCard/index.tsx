@@ -54,7 +54,7 @@ export function RoomCard(props: RoomCardProps) {
             <p className="classification">
               <strong>Classificação:</strong>
               {props.classification
-                ? props.classification
+                ? props.classification.toFixed(2)
                 : 'Sem classificação'}
             </p>
             <p className="maxPeople">

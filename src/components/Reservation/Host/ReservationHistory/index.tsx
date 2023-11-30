@@ -56,7 +56,8 @@ export function ReservationHistory({ reservationHistory }: ReservationData) {
                   <>Não Classificado</>
                 ) : (
                   <>
-                    Classificação: {reservationHistory.classification} Estrelas
+                    Classificação:{' '}
+                    {reservationHistory.classification.toFixed(2)} Estrelas
                   </>
                 )}
               </h3>

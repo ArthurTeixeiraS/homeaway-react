@@ -52,7 +52,8 @@ export function ReservationHistoryTenant({
                   <p>Não Classificado</p>
                 ) : (
                   <div>
-                    Classificação recebida: {reservationHistory.classification}
+                    Classificação recebida:{' '}
+                    {reservationHistory.classification.toFixed(2)}
                   </div>
                 )}
               </h3>

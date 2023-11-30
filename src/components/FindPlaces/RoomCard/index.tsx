@@ -41,7 +41,7 @@ export function RoomCardComponent({ room, filterData }: RoomCardProps) {
                 ) : (
                   <span>
                     <FaStar color={'#ffb60a'} />
-                    {room.classification}
+                    {room.classification.toFixed(2)}
                   </span>
                 )}
               </p>
